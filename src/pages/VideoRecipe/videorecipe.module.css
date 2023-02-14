@@ -1,0 +1,254 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --global-font-family: airbnb;
+  --global-text-primary: #ffffff;
+  --global-text-secondary: #2e266f;
+  --global-color-primary: #ffffff;
+  --global-color-secondary: #efc81a;
+  --global-text-md: 1.8rem;
+}
+
+@font-face {
+  font-family: airbnb;
+  src: url("../../assets/font/AirbnbCereal.otf");
+}
+
+/*---------------------V I D E O  R E C I P E----------------------- */
+
+.boxContainerVidio {
+  background-color: var(--global-color-primary);
+}
+
+.containerVidio {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.object {
+  position: absolute;
+  top: -8rem;
+  background-color: var(--global-color-secondary);
+  width: 5%;
+  height: 130vh;
+}
+
+.boxVidio {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 100vh;
+}
+
+.displayVidio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  height: 70%;
+}
+
+.titleVidio {
+  margin-top: 3rem;
+  max-width: 82rem;
+}
+
+.titleVidio h1 {
+  font-family: var(--global-font-family);
+  font-size: 3rem;
+  color: #000;
+  font-weight: 600;
+  margin-left: -25px;
+}
+
+.titleVidio p {
+  font-size: 1.6rem;
+  font-family: var(--global-font-family);
+  color: #aaa;
+}
+
+.ctList {
+  margin-top: 5rem;
+  width: 25%;
+  height: 100vh;
+}
+
+.listVidio {
+  width: 100%;
+}
+
+.ctList h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: var(--global-font-family);
+  color: #000;
+}
+
+.ctList h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: var(--global-font-family);
+  width: 26.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vidioOne {
+  margin-top: 2rem;
+}
+
+.vidioOne p {
+  font-size: 1rem;
+  color: #aaa;
+  font-family: var(--global-font-family);
+  font-weight: 500;
+}
+
+@media screen and (max-width: 720px) {
+  .ctList {
+    margin-left: -150px;
+  }
+  .containerVidio {
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    z-index: 9;
+  }
+  .listVidio {
+    position: absolute;
+    display: flex;
+    left: 2rem;
+  }
+  .displayVidio {
+    z-index: 9;
+  }
+  .displayVidio iframe {
+    width: 480px !important;
+  }
+  .nextVidio {
+    position: absolute;
+    top: 72rem;
+    left: 10rem;
+  }
+  .listVidio {
+    position: absolute;
+    top: 75rem;
+    left: 10rem;
+    width: 80%;
+    justify-content: space-between;
+  }
+  .three {
+    display: none;
+  }
+  .vidio-one iframe {
+    width: 200px !important;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .displayVidio iframe {
+    width: 380px !important;
+  }
+  .nextVidio {
+    position: absolute;
+    top: 72rem;
+  }
+  .listVidio {
+    position: absolute;
+    top: 75rem;
+    left: 10rem;
+    width: 80%;
+    justify-content: space-between;
+  }
+  .three {
+    display: none;
+  }
+  .vidioOne iframe {
+    width: 160px !important;
+  }
+  .vidioOne h4 {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .displayVidio iframe {
+    width: 260px !important;
+    height: 240px;
+  }
+  .titleVidio h1 {
+    font-size: 2rem;
+    width: 100%;
+  }
+  .nextVidio {
+    position: absolute;
+    top: 39rem;
+    left: 10rem;
+  }
+  .listVidio {
+    position: absolute;
+    top: 40rem;
+    left: 10rem;
+    width: 70%;
+    justify-content: space-between;
+  }
+  .three {
+    display: none;
+  }
+  .vidioOne iframe {
+    width: 120px !important;
+    height: 70px;
+  }
+  .vidioOne h4 {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .displayVidio iframe {
+    width: 180px !important;
+    height: 180px;
+    left: 1rem !important;
+  }
+  .titleVidio h1 {
+    font-size: 2rem;
+    width: 100%;
+  }
+  .nextVidio {
+    position: absolute;
+    top: 39rem;
+    left: 2rem !important;
+  }
+  .listVidio {
+    position: absolute;
+    left: -10rem !important;
+    top: 40rem;
+    width: 70%;
+    justify-content: space-between;
+  }
+  .three {
+    display: none;
+  }
+  .vidioOne iframe {
+    width: 60px !important;
+    height: 30px !important;
+  }
+  .vidioOne h4 {
+    font-size: 1rem !important;
+    width: 80%;
+  }
+}
