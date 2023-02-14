@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --global-font-family: airbnb;
+  --font-primary: #2e266f;
+  --font-heading: #3f3a3a;
+  --background-navbar: transparent;
+}
+
+@font-face {
+  font-family: airbnb;
+  src: url('../../assets/font/AirbnbCereal.otf');
+}
+
+.navbarContainer {
+  font-size: 18px;
+  font-weight: 500;
+  height: 60px;
+  background-color: var(--background-navbar);
+}
+
+.navLink {
+  color: var(--font-primary);
+}
