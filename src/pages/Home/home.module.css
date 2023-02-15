@@ -58,6 +58,7 @@
 
   border-radius: 15px;
 }
+
 .wrapperImg {
   position: relative;
   height: 635px;
@@ -105,6 +106,7 @@
   position: absolute;
   bottom: 30px;
   left: 30px;
+  text-shadow: 0 0 2px white;
 }
 
 .productType {
@@ -118,10 +120,93 @@
 .span {
   color: #3f3a3a;
 }
+@media screen and (max-width: 576px) {
+  .textLanding {
+    font-size: 45px;
+    color: var(--font-primary);
+    font-weight: 500;
+    line-height: 65px;
+  }
+
+  .heroAccsent {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 780px;
+  }
+
+  .heroImg {
+    height: 350px;
+    width: 350px;
+    object-fit: cover;
+    margin-top: 0;
+    border-radius: 15px;
+  }
+
+  .wrapperImg {
+    position: relative;
+    height: 335px;
+    width: 335px;
+    padding: 0;
+  }
+
+  .popularImg {
+    height: 350px;
+    width: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .accPopularImg {
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--yellow);
+    border-radius: 10px;
+  }
+}
 
 @media screen and (max-width: 991px) {
   .row {
     text-align: center;
-    padding-top: 100px;
+    padding-top: 80px;
+    margin-bottom: 50px;
+  }
+
+  .wrapperImg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 535px;
+    width: 535px;
+    padding: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .popularImg {
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .accPopularImg {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--yellow);
+    border-radius: 10px;
+  }
+
+  .wrapperTitle {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-shadow: 0 0 2px white;
   }
 }
