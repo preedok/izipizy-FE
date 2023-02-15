@@ -65,7 +65,7 @@ const Home = () => {
   return (
     <body className={style.body}>
       <Navbar />
-      <div className="position-relative">
+      <div className={`position-relative ${style.hero}`}>
         <img src={accsent} className={style.heroAccsent} alt="accsent" />
         <div className="container position-relative">
           <div className={`row d-flex align-items-center vh-100 ${style.row}`}>
