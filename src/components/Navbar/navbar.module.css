@@ -1,0 +1,13 @@
+@font-face {
+  font-family: airbnb;
+  src: url("../../assets/font/AirbnbCereal.otf");
+}
+
+.menu {
+  font-family: airbnb;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+
+  color: #2e266f;
+}

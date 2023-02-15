@@ -1,93 +1,96 @@
 import React from "react";
 import style from "./videorecipe.module.css";
+import Navs from "../../components/Navbar/navbar";
+import Footer from "../../components/Footer/Footer";
 
 const Video = () => {
   return (
     <>
-      <section>
-        <div className={style.boxContainerVidio}>
-          <div className={style.object}></div>
-          <div className={style.containerVidio}>
-            <div className={style.boxVidio}>
-              <div className={style.displayVidio}>
-                <iframe
-                  width="820"
-                  height="580"
-                  src="https://www.youtube.com/embed/ggeb4lXdPYo"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  className={style.vidio}
-                ></iframe>
-                <div className={style.titleVidio}>
-                  <h1>
-                    Beef Steak with Curry Sauce - [Step 4] Cut the condiment and
-                    then mix it
-                  </h1>
-                  <p>1 day ago</p>
+      <div className={style.customBody}>
+        <Navs />
+        <main>
+          <section class="container mt-4">
+            <div class={`${style.grid12} ${style.gapMedium}`}>
+              <div class={`${style.cusGridLg8} mx-5`}>
+                <div class={style.aspectLock}>
+                  <iframe
+                    class={style.embedVideo}
+                    src="https://www.youtube.com/embed/G4fSaPigWeQ"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div>
+                  <h3 class={`${style.titleVideo} ${style.h3} my-2`}>
+                    Beef Steak with Curry Sauce - [Step 4] <br /> Cut the
+                    condiment and then mix it
+                  </h3>
+                  <p class={`${style.customDate} text-muted`}>3 month ago</p>
+                </div>
+              </div>
+              <div
+                class={`${style.cusGridLg4} ${style.flexCol} ${style.gapMedium}`}
+              >
+                <h3 className={style.h3}>Next</h3>
+                <div class={style.aspectLock}>
+                  <iframe
+                    class={style.embedVideo}
+                    src="https://www.youtube.com/embed/Iu8pRHf5_Fg"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div>
+                  <h5 class="my-2">
+                    Beef Steak with Curry Sauce - [Step 5] <br />
+                    Saute condiments together until turn brown
+                  </h5>
+                  <p class="text-muted">3 month ago</p>
+                </div>
+                <div>
+                  <div class={style.aspectLock}>
+                    <iframe
+                      class={style.embedVideo}
+                      src="https://www.youtube.com/embed/GRnjSSH6IAA"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                  <h5 class="my-2">
+                    Beef Steak with Curry Sauce - [Step 6] <br />
+                    Roast beef until it’s medium rare
+                  </h5>
+                  <p class="text-muted">3 month ago</p>
+                </div>
+                <div class={style.aspectLock}>
+                  <iframe
+                    class={style.embedVideo}
+                    src="https://www.youtube.com/embed/9aNxuytikIM"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div>
+                  <h5 class="my-2">
+                    Beef Steak with Curry Sauce - [Step 7] <br />
+                    Roast beef until it’s medium rare
+                  </h5>
+                  <p class="text-muted">3 month ago</p>
                 </div>
               </div>
             </div>
-            <div className={style.ctList}>
-              <h2 className={style.nextVidio}>Next</h2>
-              <div className={style.listVidio}>
-                <div className={style.vidioOne}>
-                  <iframe
-                    width="230"
-                    height="110"
-                    src="https://www.youtube.com/embed/ggeb4lXdPYo"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    className={style.vidio}
-                  ></iframe>
-                  <h4>
-                    Beef Steak with Curry Sauce - [Step 5] Saute condiments
-                    together until turn brown
-                  </h4>
-                  <p>HanaLohana - 1 day ago</p>
-                </div>
-                <div className={style.vidioOne}>
-                  <iframe
-                    width="230"
-                    height="110"
-                    src="https://www.youtube.com/embed/ggeb4lXdPYo"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    className={style.vidio}
-                  ></iframe>
-                  <h4>
-                    Beef Steak with Curry Sauce - [Step 5] Saute condiments
-                    together until turn brown
-                  </h4>
-                  <p>HanaLohana - 1 day ago</p>
-                </div>
-                <div className={`${style.vidioOne} ${style.three}`}>
-                  <iframe
-                    width="230"
-                    height="110"
-                    src="https://www.youtube.com/embed/ggeb4lXdPYo"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    className={style.vidio}
-                  ></iframe>
-                  <h4>
-                    Beef Steak with Curry Sauce - [Step 5] Saute condiments
-                    together until turn brown
-                  </h4>
-                  <p>HanaLohana - 1 day ago</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };
