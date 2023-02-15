@@ -1,0 +1,46 @@
+@font-face {
+  font-family: airbnb;
+  src: url('../../assets/font/AirbnbCereal.otf');
+}
+
+:root {
+  --global-font-family: airbnb;
+  --font-primary: #2e266f;
+  --font-heading: #3f3a3a;
+  --background-body: #e5e5e5;
+  --grey: #efefef;
+  --yellow: #efc81a;
+  --yellowHover: #d2ac02;
+  --background-navbar: transparent;
+}
+
+.titleRecipe {
+  font-weight: bolder;
+  line-height: 50px;
+  color: var(--font-heading);
+}
+
+.descriptionTitle {
+  font-size: 18px;
+  line-height: 32px;
+  color: var(--font-heading);
+  margin: 30px 0;
+}
+
+.hr {
+  border: 1px solid var(--font-heading);
+  width: 20%;
+}
+
+.ctaMore {
+  font-size: 14px;
+  padding: 10px 36px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: var(--yellow);
+}
+
+.ctaMore:hover {
+  background-color: var(--yellowHover);
+}

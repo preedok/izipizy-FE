@@ -1,0 +1,127 @@
+@font-face {
+  font-family: airbnb;
+  src: url('../../assets/font/AirbnbCereal.otf');
+}
+
+:root {
+  --global-font-family: airbnb;
+  --font-primary: #2e266f;
+  --font-heading: #3f3a3a;
+  --background-body: #e5e5e5;
+  --grey: #efefef;
+  --yellow: #efc81a;
+  --yellowHover: #d2ac02;
+  --background-navbar: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--global-font-family);
+}
+
+.body {
+  font-family: var(--global-font-family);
+  background-color: white;
+}
+
+.textLanding {
+  font-family: var(--global-font-family);
+  font-size: 55px;
+  color: var(--font-primary);
+  font-weight: 500;
+  line-height: 80px;
+}
+
+.inputGrupSearch {
+  height: 65px;
+  border-radius: 15px;
+  background-color: #efefef;
+}
+
+.iconSearch {
+  border: none;
+  background-color: var(--grey);
+}
+
+.heroAccsent {
+  position: absolute;
+  right: 0;
+  width: 330px;
+  height: 780px;
+}
+
+.heroImg {
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+
+  border-radius: 15px;
+}
+.wrapperImg {
+  position: relative;
+  height: 635px;
+  width: 635px;
+  padding: 0;
+}
+
+.popularImg {
+  height: 600px;
+  width: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.accPopularImg {
+  position: absolute;
+  height: 600px;
+  width: 600px;
+  right: 0;
+  bottom: 0;
+  border: 3px solid var(--yellow);
+  border-radius: 10px;
+}
+
+.accNewRecipeImg {
+  position: absolute;
+  width: 350px;
+  height: 600px;
+  left: 0;
+  top: 0;
+  background-color: var(--yellow);
+}
+
+.wrapperImgRecipe {
+  position: relative;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.imgRecipe {
+  width: 100%;
+}
+
+.wrapperTitle {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.productType {
+  display: inline-block;
+  width: 123px;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.span {
+  color: #3f3a3a;
+}
+
+@media screen and (max-width: 991px) {
+  .row {
+    text-align: center;
+    padding-top: 100px;
+  }
+}
