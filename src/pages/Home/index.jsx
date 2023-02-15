@@ -77,7 +77,7 @@ const Home = () => {
                 </div>
               </form>
             </div>
-            <div className="col-lg-6 d-flex justify-content-lg-end justify-content-sm-center offset-lg-1 col-md-12" data-aos="zoom-in-left" data-aos-duration="1000">
+            <div className="col-lg-6  d-flex justify-content-lg-end offset-lg-1 col-md-12 col-sm-12 justify-content-sm-center" data-aos="zoom-in-left" data-aos-duration="1000">
               <img src={heroImg} className={style.heroImg} alt="hero-img" />
             </div>
           </div>
@@ -88,7 +88,7 @@ const Home = () => {
         <div className="container ">
           <HeadingText children="Popular For You !" />
 
-          <div className="row d-flex align-items-center">
+          <div className="row d-flex align-items-center overflow-hidden">
             <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
               <div className={style.wrapperImg}>
                 <div className={style.accPopularImg} alt="popular-img" />
@@ -111,8 +111,8 @@ const Home = () => {
           <div className={style.accNewRecipeImg} />
 
           <div className="container">
-            <div className="row d-flex align-items-center">
-              <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
+            <div className="row d-flex align-items-center  overflow-hidden">
+              <div className="col-lg-6 col-sm-12 p-0" data-aos="zoom-in-right" data-aos-duration="1000">
                 <div className={style.wrapperImg}>
                   <img src={newImg} className={`position-relative ${style.popularImg}`} alt="popular-img" />
                 </div>
@@ -131,7 +131,7 @@ const Home = () => {
         </div>
 
         <div className="container">
-          <div className="row ">
+          <div className={`row ${style.rowResponsive}`}>
             {recipeProduct.map((item) => {
               return (
                 <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-down" data-aos-duration="1000">
