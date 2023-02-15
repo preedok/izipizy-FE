@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './product.module.css';
 
-const ProductText = ({ headingTitleRecipe, descriptionTitleRecipe }) => {
+const ProductText = ({ cta, headingTitleRecipe, descriptionTitleRecipe }) => {
   return (
     <>
       <h2 className={style.titleRecipe}>{headingTitleRecipe}</h2>
@@ -9,7 +9,9 @@ const ProductText = ({ headingTitleRecipe, descriptionTitleRecipe }) => {
 
       <p className={style.descriptionTitle}>{descriptionTitleRecipe}</p>
 
-      <button className={style.ctaMore}>Learn More</button>
+      <button type="button" onClick={cta} className={style.ctaMore}>
+        Learn More
+      </button>
     </>
   );
 };

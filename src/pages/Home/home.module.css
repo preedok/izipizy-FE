@@ -58,6 +58,7 @@
 
   border-radius: 15px;
 }
+
 .wrapperImg {
   position: relative;
   height: 635px;
@@ -105,6 +106,7 @@
   position: absolute;
   bottom: 30px;
   left: 30px;
+  text-shadow: 0 0 2px white;
 }
 
 .productType {
@@ -119,9 +121,110 @@
   color: #3f3a3a;
 }
 
+@media screen and (max-width: 575px) {
+  .row {
+    text-align: center;
+    padding-top: 80px;
+    margin-bottom: 0;
+  }
+  .textLanding {
+    font-size: 45px;
+    color: var(--font-primary);
+    font-weight: 500;
+    line-height: 65px;
+  }
+
+  .heroAccsent {
+    position: absolute;
+    right: 0;
+    width: 50%;
+  }
+
+  .wrapperImg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .popularImg {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .accPopularImg {
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--yellow);
+    border-radius: 10px;
+  }
+
+  .accNewRecipeImg {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    background-color: var(--yellow);
+  }
+
+  .rowResponsive {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 520px;
+    overflow-x: auto;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .row {
     text-align: center;
-    padding-top: 100px;
+    padding-top: 80px;
+    margin-bottom: 100px;
+  }
+
+  .heroImg {
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
+  }
+
+  .wrapperImg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    padding: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .popularImg {
+    width: 90%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .accPopularImg {
+    position: absolute;
+
+    width: 90%;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--yellow);
+    border-radius: 10px;
+  }
+
+  .wrapperTitle {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-shadow: 0 0 2px white;
   }
 }
