@@ -17,7 +17,7 @@ import Navbar from '../../components/Navbar/navbar';
 import HeadingText from '../../components/HeadingText';
 import ProductText from '../../components/ProductText';
 import Footer from '../../components/Footer/Footer.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // aos
 import AOS from 'aos';
@@ -55,6 +55,12 @@ const Home = () => {
       image: `${img6}`,
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleDetail = () => {
+    navigate('/detailRecipe');
+  };
 
   return (
     <body className={style.body}>
@@ -97,7 +103,7 @@ const Home = () => {
             </div>
 
             <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-              <ProductText headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+              <ProductText cta={handleDetail} headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
             </div>
           </div>
         </div>
@@ -118,7 +124,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-                <ProductText headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+                <ProductText cta={handleDetail} headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
               </div>
             </div>
           </div>
