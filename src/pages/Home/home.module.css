@@ -120,7 +120,13 @@
 .span {
   color: #3f3a3a;
 }
-@media screen and (max-width: 576px) {
+
+@media screen and (max-width: 575px) {
+  .row {
+    text-align: center;
+    padding-top: 80px;
+    margin-bottom: 0;
+  }
   .textLanding {
     font-size: 45px;
     color: var(--font-primary);
@@ -132,39 +138,46 @@
     position: absolute;
     right: 0;
     width: 50%;
-    height: 780px;
-  }
-
-  .heroImg {
-    height: 350px;
-    width: 350px;
-    object-fit: cover;
-    margin-top: 0;
-    border-radius: 15px;
   }
 
   .wrapperImg {
     position: relative;
-    height: 335px;
-    width: 335px;
+    width: 100%;
+    height: 100%;
     padding: 0;
   }
 
   .popularImg {
-    height: 350px;
-    width: 350px;
+    width: 90%;
+    height: 90%;
     object-fit: cover;
     border-radius: 15px;
   }
 
   .accPopularImg {
     position: absolute;
-    height: 300px;
-    width: 300px;
+    height: 90%;
+    width: 90%;
     right: 0;
     bottom: 0;
     border: 3px solid var(--yellow);
     border-radius: 10px;
+  }
+
+  .accNewRecipeImg {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    background-color: var(--yellow);
+  }
+
+  .rowResponsive {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 520px;
+    overflow-x: auto;
   }
 }
 
@@ -172,31 +185,36 @@
   .row {
     text-align: center;
     padding-top: 80px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+  }
+
+  .heroImg {
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
   }
 
   .wrapperImg {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 535px;
-    width: 535px;
+
+    width: 100%;
     padding: 0;
     margin-right: 0;
     margin-bottom: 50px;
   }
 
   .popularImg {
-    height: 500px;
-    width: 500px;
+    width: 90%;
     object-fit: cover;
     border-radius: 15px;
   }
 
   .accPopularImg {
     position: absolute;
-    height: 500px;
-    width: 500px;
+
+    width: 90%;
     right: 0;
     bottom: 0;
     border: 3px solid var(--yellow);
