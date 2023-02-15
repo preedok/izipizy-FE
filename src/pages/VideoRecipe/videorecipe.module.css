@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+@font-face {
+  font-family: "Airbnb Cereal App";
+  src: url(../../assets/font/AirbnbCereal.otf);
+=======
 * {
   margin: 0px;
   padding: 0px;
@@ -20,234 +25,76 @@ body {
 @font-face {
   font-family: airbnb;
   src: url('../../assets/font/AirbnbCereal.otf');
+>>>>>>> 96b7b814b8c283cf027e9b6a0a7fc4f913288081
 }
 
-/*---------------------V I D E O  R E C I P E----------------------- */
-
-.boxContainerVidio {
-  background-color: var(--global-color-primary);
+.customBody {
+  font-family: "Airbnb Cereal App" !important;
+  background: linear-gradient(
+    90deg,
+    #efc81a 5%,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 1) 95%
+  );
 }
 
-.containerVidio {
-  position: absolute;
+.h3 {
+  color: black !important;
+}
+.h4 {
+  color: #2e266f;
+  line-height: 48px;
+  font-size: 60px !important;
+  margin-bottom: 30px !important;
+}
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.cusGridLg8 {
+  grid-column: span 8 / span 8;
+}
+
+.cusGridLg4 {
+  grid-column: span 4 / span 4;
+}
+
+.gapMedium {
+  gap: 8px;
+}
+
+.flexCol {
   display: flex;
-  width: 100%;
-  height: 100vh;
-}
-
-.object {
-  position: absolute;
-  top: -8rem;
-  background-color: var(--global-color-secondary);
-  width: 5%;
-  height: 130vh;
-}
-
-.boxVidio {
-  margin-top: 5rem;
-  display: flex;
-  justify-content: center;
-  width: 80%;
-  height: 100vh;
-}
-
-.displayVidio {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  width: 75%;
-  height: 70%;
 }
 
-.titleVidio {
-  margin-top: 3rem;
-  max-width: 82rem;
-}
-
-.titleVidio h1 {
-  font-family: var(--global-font-family);
-  font-size: 3rem;
-  color: #000;
-  font-weight: 600;
-  margin-left: -25px;
-}
-
-.titleVidio p {
-  font-size: 1.6rem;
-  font-family: var(--global-font-family);
-  color: #aaa;
-}
-
-.ctList {
-  margin-top: 5rem;
-  width: 25%;
-  height: 100vh;
-}
-
-.listVidio {
+.aspectLock {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
   width: 100%;
 }
 
-.ctList h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: var(--global-font-family);
-  color: #000;
+.embedVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
 }
 
-.ctList h4 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  font-family: var(--global-font-family);
-  width: 26.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@media (max-width: 768px) {
+  .cusGridLg8 {
+    grid-column: span 12 / span 12;
+  }
 
-.vidioOne {
-  margin-top: 2rem;
-}
-
-.vidioOne p {
-  font-size: 1rem;
-  color: #aaa;
-  font-family: var(--global-font-family);
-  font-weight: 500;
-}
-
-@media screen and (max-width: 720px) {
-  .ctList {
-    margin-left: -150px;
-  }
-  .containerVidio {
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    z-index: 9;
-  }
-  .listVidio {
-    position: absolute;
-    display: flex;
-    left: 2rem;
-  }
-  .displayVidio {
-    z-index: 9;
-  }
-  .displayVidio iframe {
-    width: 480px !important;
-  }
-  .nextVidio {
-    position: absolute;
-    top: 72rem;
-    left: 10rem;
-  }
-  .listVidio {
-    position: absolute;
-    top: 75rem;
-    left: 10rem;
-    width: 80%;
-    justify-content: space-between;
-  }
-  .three {
-    display: none;
-  }
-  .vidio-one iframe {
-    width: 200px !important;
-  }
-}
-
-@media screen and (max-width: 580px) {
-  .displayVidio iframe {
-    width: 380px !important;
-  }
-  .nextVidio {
-    position: absolute;
-    top: 72rem;
-  }
-  .listVidio {
-    position: absolute;
-    top: 75rem;
-    left: 10rem;
-    width: 80%;
-    justify-content: space-between;
-  }
-  .three {
-    display: none;
-  }
-  .vidioOne iframe {
-    width: 160px !important;
-  }
-  .vidioOne h4 {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .displayVidio iframe {
-    width: 260px !important;
-    height: 240px;
-  }
-  .titleVidio h1 {
-    font-size: 2rem;
-    width: 100%;
-  }
-  .nextVidio {
-    position: absolute;
-    top: 39rem;
-    left: 10rem;
-  }
-  .listVidio {
-    position: absolute;
-    top: 40rem;
-    left: 10rem;
-    width: 70%;
-    justify-content: space-between;
-  }
-  .three {
-    display: none;
-  }
-  .vidioOne iframe {
-    width: 120px !important;
-    height: 70px;
-  }
-  .vidioOne h4 {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .displayVidio iframe {
-    width: 180px !important;
-    height: 180px;
-    left: 1rem !important;
-  }
-  .titleVidio h1 {
-    font-size: 2rem;
-    width: 100%;
-  }
-  .nextVidio {
-    position: absolute;
-    top: 39rem;
-    left: 2rem !important;
-  }
-  .listVidio {
-    position: absolute;
-    left: -10rem !important;
-    top: 40rem;
-    width: 70%;
-    justify-content: space-between;
-  }
-  .three {
-    display: none;
-  }
-  .vidioOne iframe {
-    width: 60px !important;
-    height: 30px !important;
-  }
-  .vidioOne h4 {
-    font-size: 1rem !important;
-    width: 80%;
+  .cusGridLg4 {
+    grid-column: span 12 / span 12;
   }
 }

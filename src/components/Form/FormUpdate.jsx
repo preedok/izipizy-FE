@@ -3,60 +3,71 @@ import style from "./style.module.css";
 
 const Update = () => {
   return (
-    <section>
-      <div className={style.boxContainer}>
-        <div className={style.box}>
-          <form>
-            <div className={style.containerOne}>
-              <div className={style.inputImage}>
-                <img
-                  src={require("../../assets/images/profile/icon-image.png")}
-                  alt=""
-                  id="customBtn"
-                  for="image"
-                  name="image"
-                  className={style.labelImage}
-                />
-                <input type="file" style={{ display: "none" }} />
-                <h4 className={style.labelImage}>Add image</h4>
-              </div>
-              <div className={style.inputGr}>
-                <label for="title" name="title"></label>
+    <div className={style.customBody}>
+      <main>
+        <section>
+          <div className="container mt-5">
+            <form className="mx-5">
+              <div className="mb-3">
+                <div className={style.rectangle}>
+                  <div>
+                    <img
+                      src={require("../../assets/images/profile/icon-image.png")}
+                      alt=""
+                      className={style.imageAdd}
+                      id="customBtn"
+                    />
+                  </div>
 
+                  <h5 className="text-muted" id="customBtn">
+                    Add image
+                  </h5>
+                </div>
                 <input
-                  name="title"
+                  className={style.input}
+                  type="file"
+                  id="formFile"
+                  style={{ display: "none" }}
+                />
+              </div>
+              <div className="mb-3">
+                <input
                   type="text"
-                  className={style.inputTitle}
+                  className={`form-control ${style.input}`}
+                  id="exampleInputEmail1"
                   placeholder="Title"
-                />
-
-                <textarea
-                  name="ingredients"
-                  cols="30"
-                  rows="10"
-                  className={style.inputIngredients}
-                  placeholder="Ingredients"
-                ></textarea>
-
-                <label for="vidio" name="vidio"></label>
-
-                <input
-                  name="stepall"
-                  type="text"
-                  id="vidio"
-                  className={style.inputVidio}
-                  placeholder="Vidio"
+                  aria-describedby="emailHelp"
+                  name="title"
                 />
               </div>
-            </div>
-
-            <a>
-              <button class={`${style.mbFooter} ${style.btnSend}`}>Send</button>
-            </a>
-          </form>
-        </div>
-      </div>
-    </section>
+              <div className="mb-3">
+                <textarea
+                  className={`form-control ${style.textArea}`}
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  placeholder="Ingredients"
+                  name="ingredient"
+                ></textarea>
+              </div>
+              <div className="mb-3">
+                <textarea
+                  className={`form-control ${style.textArea}`}
+                  id="exampleFormControlTextarea1"
+                  rows="1"
+                  placeholder="Video"
+                  name="videostep"
+                ></textarea>
+              </div>
+              <div className="text-center">
+                <button type="submit" className={`btn ${style.btnCustomArea}`}>
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 };
 export default Update;

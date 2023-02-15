@@ -1,37 +1,46 @@
-import React from 'react';
-import style from './style.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "../Footer/style.module.css";
 
 const Footer = () => {
   return (
-    <>
-      <footer>
-        <div className={style.containerFooter}>
-          <div className={style.boxTxtFooter}>
-            <h1>Eat, Cook, Repeat</h1>
-            <p>Share your best recipe by uploading here !</p>
-          </div>
-          <div className={style.cr}>
-            <ul>
-              <li>
-                <a href="#">Product</a>
+    <footer className={`container-fluid mt-5 ${style.customFooter}`}>
+      <div className="text-center m-5">
+        <h4 className={style.h4}>Eat, Cook, Repeat</h4>
+        <p className="text-muted">Share your best recipe by uploading here !</p>
+      </div>
+      <nav className=" d-flex justify-content-center">
+        <div className={`container ${style.customInnerFooter}`}>
+          <div className={`${style.footerLinks}`}>
+            <ul className="navbar-nav d-flex flex-row">
+              <li className={style.customListFooter}>
+                <Link className={style.aList} to="">
+                  Product
+                </Link>
               </li>
-              <li>
-                <a href="#">Company</a>
+              <li className={style.customListFooter}>
+                <Link className={style.aList} to="">
+                  Company
+                </Link>
               </li>
-              <li>
-                <a href="#">Learn more</a>
+              <li className={style.customListFooter}>
+                <Link className={style.aList} to="">
+                  Learn More
+                </Link>
               </li>
-              <li>
-                <a href="#">Get in touch</a>
+              <li className={style.customListFooter}>
+                <Link className={style.aList} to="">
+                  Get In Touch
+                </Link>
               </li>
             </ul>
           </div>
-          <div className={style.pijarcamp}>
-            <p>© PijarCamp</p>
+          <div className={style.customArcademy}>
+            <p>© Pijar Camp</p>
           </div>
         </div>
-      </footer>
-    </>
+      </nav>
+    </footer>
   );
 };
 export default Footer;

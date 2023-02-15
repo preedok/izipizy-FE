@@ -1,0 +1,65 @@
+@font-face {
+  font-family: airbnb;
+  src: url('../../assets/font/AirbnbCereal.otf');
+}
+
+:root {
+  --global-font-family: airbnb;
+  --font-primary: #2e266f;
+  --font-heading: #3f3a3a;
+  --background-body: #e5e5e5;
+  --grey: #efefef;
+  --yellow: #efc81a;
+  --yellowHover: #d2ac02;
+  --background-navbar: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--global-font-family);
+}
+
+.navbarContainer {
+  font-weight: 500;
+  height: 80px;
+  background-color: var(--background-navbar);
+  transition: ease-in-out 0.5;
+}
+
+.nav-item .navLink {
+  font-size: 14px;
+  color: var(--font-primary);
+}
+
+.btnUser {
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+}
+
+.navColor {
+  background-color: rgba(239, 200, 26, 0.9);
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--font-primary);
+}
+
+.navLink.active {
+  text-decoration: none;
+  font-weight: bolder;
+  color: var(--font-primary);
+}
+
+@media screen and (max-width: 991px) {
+  .navbarCollapse {
+    margin-top: 20px;
+    background-color: rgba(239, 200, 26, 0.9);
+    text-align: center;
+  }
+}
