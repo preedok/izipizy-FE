@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './home.module.css';
 import accsent from '../../assets/images/landing-page/Rectangle 2.png';
 import heroImg from '../../assets/images/product/Product_landing.png';
@@ -13,13 +13,22 @@ import img4 from '../../assets/images/product/Rectangle 317.png';
 import img5 from '../../assets/images/product/Rectangle 318.png';
 import img6 from '../../assets/images/product/Rectangle 319.png';
 
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/Navbar/navbar';
 import HeadingText from '../../components/HeadingText';
 import ProductText from '../../components/ProductText';
 import Footer from '../../components/Footer/Footer.jsx';
 import { Link } from 'react-router-dom';
 
+// aos
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Home = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   const recipeProduct = [
     {
       title: 'Chicken Kare',
@@ -54,7 +63,7 @@ const Home = () => {
         <img src={accsent} className={style.heroAccsent} alt="accsent" />
         <div className="container position-relative">
           <div className={`row d-flex align-items-center vh-100 ${style.row}`}>
-            <div className="col-lg-5 col-md-12 ">
+            <div className="col-lg-5 col-md-12 " data-aos="zoom-in-right" data-aos-duration="1000">
               <h1 className={`fw-bold ${style.textLanding}`}>
                 Discover Recipe <br /> & Delicious Food
               </h1>
@@ -68,7 +77,7 @@ const Home = () => {
                 </div>
               </form>
             </div>
-            <div className="col-lg-6 d-flex justify-content-end offset-lg-1 col-md-12 ">
+            <div className="col-lg-6 d-flex justify-content-lg-end justify-content-sm-center offset-lg-1 col-md-12" data-aos="zoom-in-left" data-aos-duration="1000">
               <img src={heroImg} className={style.heroImg} alt="hero-img" />
             </div>
           </div>
@@ -80,14 +89,14 @@ const Home = () => {
           <HeadingText children="Popular For You !" />
 
           <div className="row d-flex align-items-center">
-            <div className="col-lg-6 col-sm-12">
+            <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
               <div className={style.wrapperImg}>
                 <div className={style.accPopularImg} alt="popular-img" />
                 <img src={popularImg} className={`position-relative ${style.popularImg}`} alt="popular-img" />
               </div>
             </div>
 
-            <div className="col-lg-4 offset-lg-2 col-sm-12">
+            <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
               <ProductText headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
             </div>
           </div>
@@ -103,12 +112,12 @@ const Home = () => {
 
           <div className="container">
             <div className="row d-flex align-items-center">
-              <div className="col-lg-6 col-sm-12 ">
+              <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
                 <div className={style.wrapperImg}>
                   <img src={newImg} className={`position-relative ${style.popularImg}`} alt="popular-img" />
                 </div>
               </div>
-              <div className="col-lg-4 offset-lg-2 col-sm-12">
+              <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
                 <ProductText headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
               </div>
             </div>
@@ -125,7 +134,7 @@ const Home = () => {
           <div className="row ">
             {recipeProduct.map((item) => {
               return (
-                <div className="col-lg-4 mb-4">
+                <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-down" data-aos-duration="1000">
                   <Link className={style.span} to="">
                     <div className={style.wrapperImgRecipe}>
                       <img src={item.image} className={style.imgRecipe} alt="img-recipe" />
