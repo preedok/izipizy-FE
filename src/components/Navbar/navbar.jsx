@@ -39,9 +39,7 @@ const navbar = () => {
               <div className="ms-auto">
                 <Link to="/login" className="nav-link">
                   <img src={login} alt="" />
-                  <button className="btn btn-outline-warning ms-3 rounded-4">
-                    Login
-                  </button>
+                  <button className="btn  ms-3 ">Login</button>
                 </Link>
               </div>
             </div>
