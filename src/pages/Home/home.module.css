@@ -162,6 +162,22 @@
   color: var(--font-heading);
   border-radius: 10px;
   padding: 10px 14px;
+  margin-bottom: 25px;
+}
+
+.formChat {
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+}
+
+.buttonSend {
+  background-color: transparent;
+  border: none;
+  color: var(--yellowHover);
+  position: absolute;
+  right: 10px;
+  top: 20px;
 }
 
 @media screen and (max-width: 575px) {

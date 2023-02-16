@@ -175,21 +175,25 @@ const Home = () => {
             <div className="modal-body">
               <div className="container-fluid">
                 <div className="row">
-                  <div className={`col-md-6 me-auto text-start ${style.chatAdmin}`}>Hallo, ada yg bisa dibantu</div>
+                  <div className="col-md-6 me-auto text-start">
+                    <div className={style.chatAdmin}>Hallo, ada yg bisa dibantu</div>
+                  </div>
                 </div>
                 <div className="row">
-                  <div className={`col-md-6 ms-auto text-end ${style.chatUser}`}>saya ingin bertanya</div>
+                  <div className="col-md-6 ms-auto text-end">
+                    <div className={style.chatUser}>saya ingin bertanya</div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
+            <div className="modal-footer text-center d-flex">
+              <div className="form-floating position-relative">
+                <input type="text-area" className={`form-control ${style.formChat}`} />
+                <button className={style.buttonSend}>
+                  <i class="bi bi-send-fill"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
