@@ -49,8 +49,16 @@ export const deleteRecipe = () => async (dispatch) => {
   }
 };
 
-export const getDetailRecipe = () => async (dispatch) => {
+export const getDetailRecipe = (setRecipe) => async (dispatch) => {
   try {
+    // axios
+    //     .get(`${process.env.REACT_APP_BACKEND}/recipe/${id}`)
+    //     .then(function (response) {
+    //       setRecipe(response.data.data);
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
     dispatch({ type: 'getDetailRecipe', payload: 'Get detail recipe success' });
   } catch (error) {
     Swal.fire({

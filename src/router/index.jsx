@@ -30,7 +30,7 @@ const Router = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/video" element={<VideoRecipe />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/detailRecipe" element={<DetailRecipe />} />
+          <Route path="/detailRecipe/:id" element={<DetailRecipe />} />
         </Routes>
       </BrowserRouter>
     </>
