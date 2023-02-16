@@ -11,6 +11,7 @@ import Register from '../pages/Auth/Register';
 import ForgotPassword from '../pages/Auth/ForgotPassword';
 import CodeResetPassword from '../pages/Auth/CodeResetPassword';
 import ResetPassword from '../pages/Auth/ResetPassword';
+import DetailRecipe from '../pages/DetailRecipe';
 
 const Router = () => {
   return (
@@ -27,8 +28,9 @@ const Router = () => {
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/update" element={<UpdateRecipe />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="video" element={<VideoRecipe />} />
+          <Route path="/video" element={<VideoRecipe />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/detailRecipe" element={<DetailRecipe />} />
         </Routes>
       </BrowserRouter>
     </>

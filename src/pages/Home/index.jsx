@@ -17,7 +17,7 @@ import Navbar from '../../components/Navbar/navbar';
 import HeadingText from '../../components/HeadingText';
 import ProductText from '../../components/ProductText';
 import Footer from '../../components/Footer/Footer.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // aos
 import AOS from 'aos';
@@ -56,10 +56,16 @@ const Home = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
+  const handleDetail = () => {
+    navigate('/detailRecipe');
+  };
+
   return (
     <body className={style.body}>
       <Navbar />
-      <div className="position-relative">
+      <div className={`position-relative ${style.hero}`}>
         <img src={accsent} className={style.heroAccsent} alt="accsent" />
         <div className="container position-relative">
           <div className={`row d-flex align-items-center vh-100 ${style.row}`}>
@@ -97,7 +103,7 @@ const Home = () => {
             </div>
 
             <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-              <ProductText headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+              <ProductText cta={handleDetail} headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
             </div>
           </div>
         </div>
@@ -118,7 +124,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-                <ProductText headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+                <ProductText cta={handleDetail} headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
               </div>
             </div>
           </div>

@@ -51,6 +51,14 @@
   height: 780px;
 }
 
+.hero {
+  margin-top: -72px;
+}
+
+.row {
+  padding-top: 30px;
+}
+
 .heroImg {
   height: 500px;
   width: 500px;
