@@ -22,6 +22,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import DetailRecipe from '../DetailRecipe';
 
 const Home = () => {
   useEffect(() => {
@@ -31,26 +32,32 @@ const Home = () => {
 
   const recipeProduct = [
     {
+      id: 1,
       title: 'Chicken Kare',
       image: `${img1}`,
     },
     {
+      id: 2,
       title: 'Bomb Chicken',
       image: `${img2}`,
     },
     {
+      id: 3,
       title: 'Banana Smothie Pop',
       image: `${img3}`,
     },
     {
+      id: 4,
       title: 'Coffe Lava Cake',
       image: `${img4}`,
     },
     {
+      id: 5,
       title: 'Sugar Salmon',
       image: `${img5}`,
     },
     {
+      id: 6,
       title: 'Indian Salad',
       image: `${img6}`,
     },
@@ -141,7 +148,7 @@ const Home = () => {
             {recipeProduct.map((item) => {
               return (
                 <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-down" data-aos-duration="1000">
-                  <Link className={style.span} to="">
+                  <Link className={style.span} to={`/detailRecipe/${item.id}`}>
                     <div className={style.wrapperImgRecipe}>
                       <img src={item.image} className={style.imgRecipe} alt="img-recipe" />
                       <div className={style.wrapperTitle}>
