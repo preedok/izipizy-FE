@@ -156,7 +156,44 @@ const Home = () => {
         </div>
       </div>
 
+      <button type="button" className={style.btnChat} data-bs-toggle="modal" data-bs-target="#chat">
+        Chat Admin
+      </button>
+
       <Footer />
+
+      {/* modal  */}
+      <div className="modal" id="chat" tabindex="-1" aria-labelledby="chatLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="chatLabel">
+                Chat Admin
+              </h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <div className="container-fluid">
+                <div className="row">
+                  <div className={`col-md-6 me-auto text-start ${style.chatAdmin}`}>Hallo, ada yg bisa dibantu</div>
+                </div>
+                <div className="row">
+                  <div className={`col-md-6 ms-auto text-end ${style.chatUser}`}>saya ingin bertanya</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
   );
 };
