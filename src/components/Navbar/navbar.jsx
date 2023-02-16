@@ -6,7 +6,7 @@ const navbar = () => {
   return (
     <>
       <div className="container">
-        <nav className="navbar navbar-expand-lg py-3">
+        <nav className="navbar navbar-expand-lg py-3 z-1">
           <div className="container-fluid">
             <button
               className="navbar-toggler ms-auto"
@@ -21,7 +21,7 @@ const navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav ">
-                <Link className={` nav-link me-4`} aria-current="page" to="/">
+                <Link className={`nav-link me-4`} aria-current="page" to="/">
                   Home
                 </Link>
                 <Link className={` nav-link me-4`} to="/add">
@@ -34,7 +34,7 @@ const navbar = () => {
               <div className="ms-auto">
                 <Link to="/login" className="nav-link">
                   <img src={login} alt="" />
-                  <button className="btn  ms-3 ">Login</button>
+                  <button className="btn  ms-3 rounded-4">Login</button>
                 </Link>
               </div>
             </div>
