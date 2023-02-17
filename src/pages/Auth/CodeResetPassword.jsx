@@ -20,7 +20,7 @@ const CodeResetPassword = () => {
                 <div className="row">
                   <div className="col-lg-10 col-xl-7 mx-auto">
                     <form>
-                      <InputAuth Label="Code 6 Digit" PlaceHolder="" />
+                      <InputAuth TypeInput="password" Label="Code 6 Digit" PlaceHolder="" />
                       <div className="mb-3 form-group">
                         <input id="" type="checkbox" className={style.checkboxCustom} />
                         <label style={{ color: '#696f79' }} className="ms-1 form-check-label mb-3">
