@@ -20,6 +20,7 @@ const Login = () => {
       const response = await axios.post(`https://izipizy-team.cyclic.app/api/v1/user/login`, { email, password });
 
       localStorage.setItem('token', response.data.data.token);
+      localStorage.setItem('name', response.data.data.name);
 
       if (localStorage.getItem('token')) {
         Swal.fire({

@@ -7,61 +7,61 @@ import axios from 'axios';
 import { useState, useParams, useEffect } from 'react';
 
 const ResetPassword = () => {
-  const Navigate = useNavigate();
-  //state
-  const [form, setForm] = useState({
-    password: '',
-    repeatpassword: '',
-  });
+  // const Navigate = useNavigate();
+  // //state
+  // const [form, setForm] = useState({
+  //   password: '',
+  //   repeatpassword: '',
+  // });
 
-  //get ID from parameter URL
-  const { id } = useParams();
+  // //get ID from parameter URL
+  // const { id } = useParams();
 
-  //hook useEffect
-  useEffect(() => {
-    //panggil method "fetchData"
-    getDataById();
-  }, []);
+  // //hook useEffect
+  // useEffect(() => {
+  //   //panggil method "fetchData"
+  //   getDataById();
+  // }, []);
 
-  //function "getPostById"
-  const getDataById = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/user/login/${id}`);
-    //get response data
-    const data = await response.data.data;
+  // //function "getPostById"
+  // const getDataById = async () => {
+  //   const response = await axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/user/login/${id}`);
+  //   //get response data
+  //   const data = await response.data.data;
 
-    //assign data to state
-    setForm(data.password);
-  };
+  //   //assign data to state
+  //   setForm(data.password);
+  // };
 
-  //function "updateData"
-  const updateData = async (e) => {
-    e.preventDefault();
-    if (form.password == '' || form.repeatpassword == '') {
-      alert('password harus input');
-    } else {
-      const body = {
-        password: form.password,
-        repeatpassword: form.repeatpassword,
-      };
-      if (form.password !== form.repeatpassword) {
-        alert('Password dan Repeat password tidak sama');
-      } else {
-        //send data to server
-        await axios
-          .put(`${process.env.REACT_APP_BACKEND_URL}/user/${id}`, body)
-          .then((response) => {
-            //redirect
-            console.log(response.data);
-            // alert("Update password successfully");
-            // return Navigate("/Profile");
-          })
-          .catch((error) => {
-            //assign validation on state
-            console.log(error);
-          });
-      }
-    }
-  };
+  // //function "updateData"
+  // const updateData = async (e) => {
+  //   e.preventDefault();
+  //   if (form.password == '' || form.repeatpassword == '') {
+  //     alert('password harus input');
+  //   } else {
+  //     const body = {
+  //       password: form.password,
+  //       repeatpassword: form.repeatpassword,
+  //     };
+  //     if (form.password !== form.repeatpassword) {
+  //       alert('Password dan Repeat password tidak sama');
+  //     } else {
+  //       //send data to server
+  //       await axios
+  //         .put(`${process.env.REACT_APP_BACKEND_URL}/user/${id}`, body)
+  //         .then((response) => {
+  //           //redirect
+  //           console.log(response.data);
+  //           // alert("Update password successfully");
+  //           // return Navigate("/Profile");
+  //         })
+  //         .catch((error) => {
+  //           //assign validation on state
+  //           console.log(error);
+  //         });
+  //     }
+  //   }
+  // };
 
   return (
     <section>
