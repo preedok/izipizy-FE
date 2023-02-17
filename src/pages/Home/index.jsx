@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+// eslint-disable-next-line
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import style from './home.module.css';
 import accsent from '../../assets/images/landing-page/Rectangle 2.png';
 import heroImg from '../../assets/images/product/Product_landing.png';
-import popularImg from '../../assets/images/product/product_popular.png';
-import newImg from '../../assets/images/product/Rectangle 313.png';
 
 // img product
-import img1 from '../../assets/images/product/Rectangle 314.png';
-import img2 from '../../assets/images/product/Rectangle 315.png';
-import img3 from '../../assets/images/product/Rectangle 316.png';
-import img4 from '../../assets/images/product/Rectangle 317.png';
-import img5 from '../../assets/images/product/Rectangle 318.png';
-import img6 from '../../assets/images/product/Rectangle 319.png';
 
 import Navbar from '../../components/Navbar/navbar';
 import HeadingText from '../../components/HeadingText';
@@ -22,7 +16,6 @@ import { Link, useNavigate } from 'react-router-dom';
 // aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import DetailRecipe from '../DetailRecipe';
 
 const Home = () => {
   useEffect(() => {
@@ -30,43 +23,24 @@ const Home = () => {
     AOS.refresh();
   }, []);
 
-  const recipeProduct = [
-    {
-      id: 1,
-      title: 'Chicken Kare',
-      image: `${img1}`,
-    },
-    {
-      id: 2,
-      title: 'Bomb Chicken',
-      image: `${img2}`,
-    },
-    {
-      id: 3,
-      title: 'Banana Smothie Pop',
-      image: `${img3}`,
-    },
-    {
-      id: 4,
-      title: 'Coffe Lava Cake',
-      image: `${img4}`,
-    },
-    {
-      id: 5,
-      title: 'Sugar Salmon',
-      image: `${img5}`,
-    },
-    {
-      id: 6,
-      title: 'Indian Salad',
-      image: `${img6}`,
-    },
-  ];
+  const [recipe, setRecipe] = useState([{}]);
+  const [timestamp, setTimestamp] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://izipizy-team.cyclic.app/api/v1/recipe')
+      .then((response) => {
+        setRecipe(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const navigate = useNavigate();
 
   const handleDetail = () => {
-    navigate('/detailRecipe');
+    navigate(`/detailRecipe/${recipe[0].id}`);
   };
 
   return (
@@ -105,12 +79,12 @@ const Home = () => {
             <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
               <div className={style.wrapperImg}>
                 <div className={style.accPopularImg} alt="popular-img" />
-                <img src={popularImg} className={`position-relative ${style.popularImg}`} alt="popular-img" />
+                <img src={recipe[0].image} crossOrigin="anonymous" className={`position-relative ${style.popularImg}`} alt="popular-img" />
               </div>
             </div>
 
             <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-              <ProductText cta={handleDetail} headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+              <ProductText cta={handleDetail} headingTitleRecipe={recipe[0].name_recipe} descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
             </div>
           </div>
         </div>
@@ -127,11 +101,11 @@ const Home = () => {
             <div className="row d-flex align-items-center  overflow-hidden">
               <div className="col-lg-6 col-sm-12 p-0" data-aos="zoom-in-right" data-aos-duration="1000">
                 <div className={style.wrapperImg}>
-                  <img src={newImg} className={`position-relative ${style.popularImg}`} alt="popular-img" />
+                  <img src={recipe[0].image} crossOrigin="anonymous" className={`position-relative ${style.popularImg}`} alt="popular-img" />
                 </div>
               </div>
               <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-                <ProductText cta={handleDetail} headingTitleRecipe="Healthy Bone Broth Ramen (Quick & Easy)" descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+                <ProductText cta={handleDetail} headingTitleRecipe={recipe[0].name_recipe} descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" props={recipe} />
               </div>
             </div>
           </div>
@@ -145,14 +119,14 @@ const Home = () => {
 
         <div className="container">
           <div className={`row ${style.rowResponsive}`}>
-            {recipeProduct.map((item) => {
+            {recipe.map((item) => {
               return (
                 <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-down" data-aos-duration="1000">
                   <Link className={style.span} to={`/detailRecipe/${item.id}`}>
                     <div className={style.wrapperImgRecipe}>
-                      <img src={item.image} className={style.imgRecipe} alt="img-recipe" />
+                      <img src={item.image} crossOrigin="anonymous" className={style.imgRecipe} alt="img-recipe" />
                       <div className={style.wrapperTitle}>
-                        <span className={style.productType}>{item.title}</span>
+                        <span className={style.productType}>{item.name_recipe}</span>
                       </div>
                     </div>
                   </Link>

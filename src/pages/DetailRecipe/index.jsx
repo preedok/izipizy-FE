@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 
 import style from './detail.module.css';
-import img from '../../assets/images/product/Product_landing.png';
+
 import imgProfile from '../../assets/images/profile/Ellipse 128.png';
 import Navbar from '../../components/Navbar/navbar';
 import Footer from '../../components/Footer/Footer';
@@ -11,15 +11,23 @@ import CommentList from '../../components/CommentList';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const DetailRecipe = () => {
-  // const { id } = useParams();
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState([{}]);
 
-  // const [recipe, setRecipe] = useState([{}]);
-
-  // useEffect(() => {
-  // dispatch(getDetailRecipe(setRecipe));
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`https://izipizy-team.cyclic.app/api/v1/recipe/${id}`)
+      .then((response) => {
+        setRecipe(response.data.data);
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     AOS.init();
@@ -38,6 +46,40 @@ const DetailRecipe = () => {
     console.log(count);
   };
 
+  let ingredient = `${recipe.ingredients}`;
+  let split = ingredient.split('-');
+
+  const [comments, setComments] = useState([
+    {
+      comment_text: '',
+      recepe_id: `${id}`,
+    },
+  ]);
+
+  const handleChange = (e) => {
+    setComments({
+      ...setComments,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSendComment = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('comment_text', comments.comment_text);
+    formData.append('recepe_id', comments.recepe_id);
+    axios
+      .post('https://izipizy-team.cyclic.app/api/v1/comment', formData)
+      .then((res) => {
+        console.log(res);
+        alert('Comment Added');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
+  };
+
   return (
     <body className={style.body}>
       <div className="container-fluid">
@@ -46,14 +88,14 @@ const DetailRecipe = () => {
 
           <div className="row text-center mt-4">
             <div className="col-lg-12" data-aos="zoom-in-left" data-aos-duration="1000">
-              <h1 className={`fw-bold ${style.textLanding}`}>Bone Broth Ramen</h1>
+              <h1 className={`fw-bold ${style.textLanding}`}>{recipe.name_recipe}</h1>
             </div>
           </div>
 
           <div className="row mb-5">
             <div className="col-lg-12 text-center" data-aos="zoom-in-right" data-aos-duration="1000">
               <div className={style.wrapperImg}>
-                <img src={img} className={`position-relative ${style.detailImg}`} alt="popular-img" />
+                <img src={recipe.image} crossOrigin="anonymous" className={`position-relative ${style.detailImg}`} alt="popular-img" />
 
                 <div className={style.wrapperButton}>
                   <button className={style.buttonSave}>
@@ -71,15 +113,9 @@ const DetailRecipe = () => {
             <div className="col-lg-12" data-aos="zoom-in-left" data-aos-duration="1000">
               <h5 className="fw-bolder">Ingredients</h5>
               <ul type="stripe">
-                <li>2 Eggs</li>
-                <li>2 Tbsp Mayonaise</li>
-                <li>3 Slices Bread</li>
-                <li>A Little Butter</li>
-                <li>
-                  <sup>1</sup>/<sub>3</sub> Carton Of Cress
-                </li>
-                <li>2 - 3 Slice Of Tomato Or A Lettuces Leaf And A Slices Of Ham Or Cheese</li>
-                <li>Crips, To Serve</li>
+                {split.map((item) => (
+                  <li>{item}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -97,11 +133,22 @@ const DetailRecipe = () => {
           <div className="row text-center mb-5">
             <div className="col-lg-12" data-aos="zoom-in-right" data-aos-duration="1000">
               <div className="form-floating mb-3">
-                <textarea className={`form-control ${style.formControl}`} placeholder="Leave a comment here" id="floatingTextarea" style={{ height: '300px', backgroundColor: '#efefef' }}></textarea>
-                <label for="floatingTextarea">Comments</label>
+                <form onSubmit={handleSendComment}>
+                  <textarea
+                    className={`form-control ${style.formControl}`}
+                    style={{ height: '300px', backgroundColor: '#efefef' }}
+                    placeholder="Leave a comment here"
+                    name="comment"
+                    type="text"
+                    value={comments.comment_text}
+                    onChange={handleChange}
+                  ></textarea>
+                </form>
               </div>
 
-              <button className={style.buttonSend}>Send</button>
+              <button type="submit" className={style.buttonSend}>
+                Send
+              </button>
             </div>
           </div>
 
