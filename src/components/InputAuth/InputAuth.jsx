@@ -7,7 +7,7 @@ const InputAuth = (props) => {
       <label style={{ color: '#696f79' }} className="formLabel">
         {props.Label}
       </label>
-      <input type="text" className={`${style.input} form-control mt-2`} id="" aria-describedby="" placeholder={props.PlaceHolder} />
+      <input type={props.TypeInput} placeholder={props.PlaceHolder} value={props.Value} onChange={props.OnChange} className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
     </div>
   );
 };

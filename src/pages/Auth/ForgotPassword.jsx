@@ -23,7 +23,7 @@ const ForgotPassword = () => {
                   <div className="col-lg-10 col-xl-7 mx-auto">
                     <HeaderAuth TitleAuth="Forgot Password" SpanAuth="We just need your registered e-mail address to send your password resend" />
                     <form>
-                      <InputAuth Label="Email" PlaceHolder="Examplexxx@gmail.com" />
+                      <InputAuth TypeInput="email" Label="Email" PlaceHolder="Examplexxx@gmail.com" />
                       <div className="mb-3 form-group">
                         <input id="" type="checkbox" className={style.checkboxCustom} />
                         <label style={{ color: '#696f79' }} className="ms-1 form-check-label mb-3">
