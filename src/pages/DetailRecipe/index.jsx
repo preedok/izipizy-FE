@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+// import axios from 'axios';
+
 import style from './detail.module.css';
 import img from '../../assets/images/product/Product_landing.png';
 import imgProfile from '../../assets/images/profile/Ellipse 128.png';
@@ -8,9 +10,17 @@ import CommentList from '../../components/CommentList';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const DetailRecipe = () => {
+  // const { id } = useParams();
+
+  // const [recipe, setRecipe] = useState([{}]);
+
+  // useEffect(() => {
+  // dispatch(getDetailRecipe(setRecipe));
+  // }, []);
+
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -22,6 +32,12 @@ const DetailRecipe = () => {
     navigate('/video');
   };
 
+  let count = 0;
+  const handleLike = () => {
+    count++;
+    console.log(count);
+  };
+
   return (
     <body className={style.body}>
       <div className="container-fluid">
@@ -30,7 +46,7 @@ const DetailRecipe = () => {
 
           <div className="row text-center mt-4">
             <div className="col-lg-12" data-aos="zoom-in-left" data-aos-duration="1000">
-              <h1 className={`fw-bold ${style.textLanding}`}>Loream Sandwich</h1>
+              <h1 className={`fw-bold ${style.textLanding}`}>Bone Broth Ramen</h1>
             </div>
           </div>
 
@@ -43,7 +59,7 @@ const DetailRecipe = () => {
                   <button className={style.buttonSave}>
                     <i className="bi bi-bookmark"></i>
                   </button>
-                  <button className={style.buttonLike}>
+                  <button className={style.buttonLike} onClick={handleLike}>
                     <i className="bi bi-hand-thumbs-up"></i>
                   </button>
                 </div>

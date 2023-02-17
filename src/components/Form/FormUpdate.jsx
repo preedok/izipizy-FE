@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "./style.module.css";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Update = () => {
   return (
@@ -37,7 +39,7 @@ const Update = () => {
                   id="exampleInputEmail1"
                   placeholder="Title"
                   aria-describedby="emailHelp"
-                  name="title"
+                  name="name_recipe"
                 />
               </div>
               <div className="mb-3">
@@ -46,17 +48,17 @@ const Update = () => {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   placeholder="Ingredients"
-                  name="ingredient"
+                  name="ingredients"
                 ></textarea>
               </div>
               <div className="mb-3">
-                <textarea
-                  className={`form-control ${style.textArea}`}
+                <input
+                  className={`form-control ${style.input}`}
                   id="exampleFormControlTextarea1"
                   rows="1"
                   placeholder="Video"
-                  name="videostep"
-                ></textarea>
+                  name="video"
+                />
               </div>
               <div className="text-center">
                 <button type="submit" className={`btn ${style.btnCustomArea}`}>

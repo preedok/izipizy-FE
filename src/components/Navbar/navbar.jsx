@@ -32,11 +32,13 @@ const navbar = () => {
                 </Link>
               </div>
               <div className="ms-auto">
-                <Link to="/login" className="nav-link">
-                  <img src={login} alt="" />
-                  <button className="btn  ms-3 rounded-4">Login</button>
+                <Link to="/profile" className="nav-link">
+                  <img className="rounded-5" src={login} alt="" />
                 </Link>
               </div>
+              <Link to="/login" className="nav-link">
+                <button className="btn  ms-3 rounded-4">Login</button>
+              </Link>
             </div>
           </div>
         </nav>

@@ -32,25 +32,37 @@ const Home = () => {
   const recipeProduct = [
     {
       title: "Chicken Kare",
+      id: 1,
+      title: "Chicken Kare",
       image: `${img1}`,
     },
     {
+      title: "Bomb Chicken",
+      id: 2,
       title: "Bomb Chicken",
       image: `${img2}`,
     },
     {
       title: "Banana Smothie Pop",
+      id: 3,
+      title: "Banana Smothie Pop",
       image: `${img3}`,
     },
     {
+      title: "Coffe Lava Cake",
+      id: 4,
       title: "Coffe Lava Cake",
       image: `${img4}`,
     },
     {
       title: "Sugar Salmon",
+      id: 5,
+      title: "Sugar Salmon",
       image: `${img5}`,
     },
     {
+      title: "Indian Salad",
+      id: 6,
       title: "Indian Salad",
       image: `${img6}`,
     },
@@ -209,7 +221,70 @@ const Home = () => {
         </div>
       </div>
 
+      <button
+        type="button"
+        className={style.btnChat}
+        data-bs-toggle="modal"
+        data-bs-target="#chat"
+      >
+        Chat Admin
+      </button>
+
       <Footer />
+
+      {/* modal  */}
+      <div
+        className="modal"
+        id="chat"
+        tabindex="-1"
+        aria-labelledby="chatLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="chatLabel">
+                Chat Admin
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-md-6 me-auto text-start">
+                    <div className={style.chatAdmin}>
+                      Hallo, ada yg bisa dibantu
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-6 ms-auto text-end">
+                    <div className={style.chatUser}>saya ingin bertanya</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer text-center d-flex">
+              <div className="form-floating position-relative">
+                <input
+                  type="text-area"
+                  className={` ${style.formChat}`}
+                  placeholder="Kirimkan Pesan"
+                />
+                <button className={style.buttonSend}>
+                  <i class="bi bi-send-fill"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
   );
 };

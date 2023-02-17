@@ -23,9 +23,11 @@
 
 .textArea {
   background-color: #a8a8a8 !important;
+  height: 200px;
 }
 .input {
   background-color: #a8a8a8 !important;
+  height: 65px;
 }
 .activeCustom {
   font-weight: bold !important;
