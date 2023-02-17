@@ -53,7 +53,7 @@ const Register = () => {
         UserRegister(body)
           .then((response) => {
             Swal.fire({
-              title: 'Register',
+              title: `${response.data.message}`,
               text: 'Register Successfully!',
               icon: 'success',
               dangerMode: true,
@@ -65,7 +65,7 @@ const Register = () => {
           })
           .catch((err) => {
             Swal.fire({
-              title: 'Register',
+              title: `${err.data.message}`,
               text: 'Register Failed',
               icon: 'error',
               dangerMode: true,
