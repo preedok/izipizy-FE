@@ -2,10 +2,43 @@ import React from 'react';
 import HeaderAuth from '../../components/HeadingText/HeaderAuth';
 import style from './auth.module.css';
 import ButtonAuth from '../../components/ButtonAuth/ButtonAuth';
-import InputAuth from '../../components/InputAuth/InputAuth';
-import { Link } from 'react-router-dom';
+// import InputAuth from '../../components/InputAuth/InputAuth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+  const Navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`https://izipizy-team.cyclic.app/api/v1/user/login`, { email, password });
+
+      localStorage.setItem('token', response.data.data.token);
+
+      if (localStorage.getItem('token')) {
+        Swal.fire({
+          title: 'Login Success',
+          text: 'Your account has been successfully logged in',
+          icon: 'success',
+        });
+        Navigate('/');
+        window.location.reload();
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Login Failed',
+        text: 'Make sure your email or password is correct!',
+        icon: 'warning',
+      });
+    }
+  };
+
   return (
     <section>
       <div className="container-fluid">
@@ -22,9 +55,21 @@ const Login = () => {
                 <div className="row">
                   <div className="col-lg-10 col-xl-7 mx-auto">
                     <HeaderAuth TitleAuth="Welcome" SpanAuth="Log in into your exiting account" />
-                    <form>
-                      <InputAuth Label="Email" PlaceHolder="Examplexxx@gmail.com" />
-                      <InputAuth Label="Password" PlaceHolder="Password" />
+                    <form onSubmit={handleSubmit}>
+                      <div className="mb-3 form-group">
+                        <label style={{ color: '#696f79' }} className="formLabel">
+                          Email
+                        </label>
+                        <input type="email" placeholder="Examplexxx@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                      </div>
+                      <div className="mb-3 form-group">
+                        <label style={{ color: '#696f79' }} className="formLabel">
+                          Password
+                        </label>
+                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                      </div>
+                      {/* <InputAuth TypeInput="email" Label="Email" PlaceHolder="Examplexxx@gmail.com" Value="{email}" OnChange="{(e) => setEmail(e.target.value)}" />
+                      <InputAuth TypeInput="password" Label="Password" PlaceHolder="Password" Value="{password}" OnChange="{(e) => setPassword(e.target.value)}" /> */}
                       <div className="mb-3 form-group">
                         <input id="" type="checkbox" className={style.checkboxCustom} />
                         <label style={{ color: '#696f79' }} className="ms-1 form-check-label mb-3">
