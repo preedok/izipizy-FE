@@ -120,13 +120,14 @@
   bottom: 30px;
   left: 30px;
 
-  text-shadow: 0 0 2px white;
+  text-shadow: 0 0 2px black;
 }
 
 .productType {
   display: inline-block;
   width: 123px;
 
+  color: white;
   font-size: 20px;
   font-weight: 600;
 }

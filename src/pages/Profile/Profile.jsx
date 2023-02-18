@@ -4,6 +4,7 @@ import iconEdit from '../../assets/images/profile/Vector.png';
 import style from '../../pages/Profile/style.module.css';
 import { Link } from 'react-router-dom';
 import Navs from '../../components/Navbar/navbar';
+import NavbarLogin from '../../components/NavbarLogin';
 
 // aos
 import AOS from 'aos';
@@ -17,9 +18,10 @@ const Profile = () => {
     AOS.refresh();
   }, []);
 
+  const isLogin = localStorage.getItem('token');
   return (
     <>
-      <Navs />
+      {!isLogin ? <Navs /> : <NavbarLogin />}
       <section className={style.margin}>
         <div className={style.boxContainer}>
           <div className={style.box}>

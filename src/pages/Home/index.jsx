@@ -12,6 +12,7 @@ import HeadingText from '../../components/HeadingText';
 import ProductText from '../../components/ProductText';
 import Footer from '../../components/Footer/Footer.jsx';
 import { Link, useNavigate } from 'react-router-dom';
+import NavbarLogin from '../../components/NavbarLogin';
 
 // aos
 import AOS from 'aos';
@@ -24,11 +25,10 @@ const Home = () => {
   }, []);
 
   const [recipe, setRecipe] = useState([{}]);
-  const [timestamp, setTimestamp] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://izipizy-team.cyclic.app/api/v1/recipe')
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe`)
       .then((response) => {
         setRecipe(response.data.data);
       })
@@ -43,9 +43,11 @@ const Home = () => {
     navigate(`/detailRecipe/${recipe[0].id}`);
   };
 
+  const isLogin = localStorage.getItem('token');
+
   return (
     <body className={style.body}>
-      <Navbar />
+      {!isLogin ? <Navbar /> : <NavbarLogin />}
       <div className={`position-relative ${style.hero}`}>
         <img src={accsent} className={style.heroAccsent} alt="accsent" />
         <div className="container position-relative">
