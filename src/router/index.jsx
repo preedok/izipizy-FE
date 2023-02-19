@@ -12,6 +12,7 @@ import ForgotPassword from '../pages/Auth/ForgotPassword';
 import CodeResetPassword from '../pages/Auth/CodeResetPassword';
 import ResetPassword from '../pages/Auth/ResetPassword';
 import DetailRecipe from '../pages/DetailRecipe';
+import Search from '../pages/Search';
 
 const Router = () => {
   return (
@@ -31,6 +32,7 @@ const Router = () => {
           <Route path="/video" element={<VideoRecipe />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/detailRecipe/:id" element={<DetailRecipe />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -7,7 +7,7 @@ const CommentList = ({ dataComment }) => {
       {dataComment.map((item) => (
         <li className={style.listComments}>
           <div className={style.wrapperComments}>
-            <img src={item.image} alt="profile" className="me-3" />
+            <img src={item.image_profile} alt="profile" className={`me-3 ${style.imgComment}`} />
             <div className={style.wrapper}>
               <p className={style.titleName}>{item.name}</p>
               <span className={style.comments}>{item.comment_text}</span>
