@@ -2,14 +2,15 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 // get All Recipe
-export const getRecipe = () => async (dispatch) => {
+export const getRecipe = (setRecipe) => async (dispatch) => {
   try {
-    dispatch({ type: 'getAllRecipe', payload: 'Get all recipe success' });
+    // axios.get('https://izipizy-team.cyclic.app/api/v1/recipe').then((response) => {
+    //   console.log(response.data);
+    //   setRecipe(response.data.data);
+    // });
+    dispatch({ type: 'getAllRecipe', payload: 'success' });
   } catch (error) {
-    Swal.fire({
-      text: error.response.data.message,
-      icon: 'warning',
-    });
+    console.log(error);
   }
 };
 

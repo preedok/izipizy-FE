@@ -18,6 +18,7 @@ import CodeResetPassword from "../pages/Auth/CodeResetPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import DetailRecipe from "../pages/DetailRecipe";
 import Swal from "sweetalert2";
+import Search from "../pages/Search";
 
 // Scroll to Top when switching page
 const ScrollToTop = ({ children }) => {
@@ -95,6 +96,7 @@ const Router = () => {
               }
             />
             <Route path="/video" element={<VideoRecipe />} />
+            <Route path="/search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/detailRecipe/:id" element={<DetailRecipe />} />
           </Routes>

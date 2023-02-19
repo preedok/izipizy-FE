@@ -229,9 +229,10 @@ const Profile = () => {
     AOS.refresh();
   }, []);
 
+  const isLogin = localStorage.getItem("token");
   return (
     <>
-      <Navs />
+      {!isLogin ? <Navs /> : <NavbarLogin />}
       <section className={style.margin}>
         <div className={style.boxContainer}>
           <div className={style.box}>

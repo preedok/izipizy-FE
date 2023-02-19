@@ -4,8 +4,9 @@ import style from './register.module.css';
 import ButtonAuth from '../../components/ButtonAuth/ButtonAuth';
 // import InputAuth from '../../components/InputAuth/InputAuth';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import Swal from 'sweetalert2';
+import { UserRegister } from '../../redux/action/authAction';
 
 const Register = () => {
   const Navigate = useNavigate();
@@ -17,66 +18,126 @@ const Register = () => {
     confirmPassword: '',
   });
 
-  const handleChange = (e) => {
-    setDataUser({
-      ...dataUser,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const onSubmit = (e, body) => {
     e.preventDefault();
-    if (dataUser.name === '' || dataUser.email === '' || dataUser.password === '' || dataUser.phone === '' || dataUser.confirmPassword === '') {
-      Swal.fire({
-        title: 'Register Failed',
-        text: 'Make sure your data is correct!',
-        icon: 'failed',
-      });
-    }
-    const body = {
-      name: dataUser.name,
-      email: dataUser.email,
-      password: dataUser.password,
-      phone: dataUser.phone,
-      confirmPassword: dataUser.confirmPassword,
-    };
-    if (dataUser.confirmPassword !== dataUser.password) {
+    // console.log(form);
+    if (dataUser.name == '' || dataUser.email == '' || dataUser.phone == '' || dataUser.password == '' || dataUser.confirmPassword == '') {
       Swal.fire({
         title: 'Register',
-        text: 'Password not match!',
+        text: 'Enter All Input!',
         icon: 'error',
         dangerMode: true,
       }).then(async (confirm) => {
         if (confirm) {
         }
       });
-    }
-    axios
-      .post(`https://izipizy-team.cyclic.app/api/v1/user/register`, dataUser)
-      .then((response) => {
-        if (response.data.code !== 200) {
-          Swal.fire({
-            title: 'Account Registered',
-            text: 'Log In to your account now!',
-            icon: 'success',
-          });
-        } else {
-          Swal.fire({
-            title: 'Account Registered',
-            text: 'Log In to your account now!',
-            icon: 'success',
-          });
-        }
-        return Navigate('/login');
-      })
-      .catch((err) => {
+    } else {
+      const body = {
+        name: dataUser.name,
+        email: dataUser.email,
+        phone: dataUser.phone,
+        password: dataUser.password,
+        confirmPassword: dataUser.confirmPassword,
+      };
+      if (dataUser.confirmPassword !== dataUser.password) {
         Swal.fire({
-          title: 'Register Failed',
-          text: 'Make sure your data is correct!',
-          icon: 'failed',
+          title: 'Register',
+          text: 'Password not match!',
+          icon: 'error',
+          dangerMode: true,
+        }).then(async (confirm) => {
+          if (confirm) {
+          }
         });
-      });
+      } else {
+        UserRegister(body)
+          .then((response) => {
+            Swal.fire({
+              title: `${response.data.message}`,
+              text: 'Register Successfully!',
+              icon: 'success',
+              dangerMode: true,
+            }).then(async (confirm) => {
+              if (confirm) {
+                return Navigate('/login');
+              }
+            });
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: `${err.data.message}`,
+              text: 'Register Failed',
+              icon: 'error',
+              dangerMode: true,
+            }).then(async (confirm) => {
+              if (confirm) {
+              }
+            });
+          });
+      }
+    }
   };
+
+  // const handleChange = (e) => {
+  //   setDataUser({
+  //     ...dataUser,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (dataUser.name === '' || dataUser.email === '' || dataUser.password === '' || dataUser.phone === '' || dataUser.confirmPassword === '') {
+  //     Swal.fire({
+  //       title: 'Register Failed',
+  //       text: 'Make sure your data is filled!',
+  //       icon: 'failed',
+  //     });
+  //   }
+  //   // const body = {
+  //   //   name: dataUser.name,
+  //   //   email: dataUser.email,
+  //   //   password: dataUser.password,
+  //   //   phone: dataUser.phone,
+  //   //   confirmPassword: dataUser.confirmPassword,
+  //   // };
+  //   if (dataUser.confirmPassword !== dataUser.password) {
+  //     Swal.fire({
+  //       title: 'Register',
+  //       text: 'Password not match!',
+  //       icon: 'error',
+  //       dangerMode: true,
+  //     }).then(async (confirm) => {
+  //       if (confirm) {
+  //       }
+  //     });
+  //   }
+  //   axios
+  //     .post(`https://izipizy-team.cyclic.app/api/v1/user/register`, dataUser)
+  //     .then((response) => {
+  //       if (response.data.code !== 200) {
+  //         Swal.fire({
+  //           title: 'Account Registered',
+  //           text: 'Log In to your account now!',
+  //           icon: 'success',
+  //         });
+  //       } else {
+  //         Swal.fire({
+  //           title: 'Account Registered',
+  //           text: 'Log In to your account now!',
+  //           icon: 'success',
+  //         });
+  //       }
+  //       // return Navigate('/login');
+  //     })
+  //     .catch((err) => {
+  //       Swal.fire({
+  //         title: 'Register Failed',
+  //         text: 'Make sure your data is correct!',
+  //         icon: 'failed',
+  //       });
+  //     });
+  // };
 
   return (
     <section>
@@ -94,36 +155,36 @@ const Register = () => {
                 <div className="row">
                   <div className="col-lg-10 col-xl-7 mx-auto">
                     <HeaderAuth TitleAuth="Let's Get Started" SpanAuth="Create new account to access all features" />
-                    <form>
+                    <form onSubmit={(e) => onSubmit(e)}>
                       <div className="mb-3 form-group">
                         <label style={{ color: '#696f79' }} className="formLabel">
                           Name
                         </label>
-                        <input type="text" placeholder="Name" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input onChange={(e) => setDataUser({ ...dataUser, name: e.target.value })} type="text" placeholder="Name" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
                       </div>
                       <div className="mb-3 form-group">
                         <label style={{ color: '#696f79' }} className="formLabel">
                           Email Address*
                         </label>
-                        <input type="email" placeholder="Enter email address" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input onChange={(e) => setDataUser({ ...dataUser, email: e.target.value })} type="email" placeholder="Enter email address" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
                       </div>
                       <div className="mb-3 form-group">
                         <label style={{ color: '#696f79' }} className="formLabel">
                           Phone Number
                         </label>
-                        <input type="number" placeholder="08xxxxxxxxxx" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input onChange={(e) => setDataUser({ ...dataUser, phone: e.target.value })} type="text" placeholder="08xxxxxxxxxx" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
                       </div>
                       <div className="mb-3 form-group">
                         <label style={{ color: '#696f79' }} className="formLabel">
                           Create New Password
                         </label>
-                        <input type="password" placeholder="Create New Password" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input onChange={(e) => setDataUser({ ...dataUser, password: e.target.value })} type="password" placeholder="Create New Password" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
                       </div>
                       <div className="mb-3 form-group">
                         <label style={{ color: '#696f79' }} className="formLabel">
                           New Password
                         </label>
-                        <input type="password" placeholder="New Password" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input onChange={(e) => setDataUser({ ...dataUser, confirmPassword: e.target.value })} type="password" placeholder="New Password" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
                       </div>
                       {/* <InputAuth TypeInput="text" Label="Name" PlaceHolder="Name" />
                       <InputAuth TypeInput="email" Label="Email Address*" PlaceHolder="Enter email address" />
