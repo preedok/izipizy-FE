@@ -28,7 +28,6 @@ body {
 }
 .profile {
   position: relative;
-  margin-top: 5rem;
   width: 17rem;
   height: 20rem;
   flex-direction: column;
@@ -38,21 +37,23 @@ body {
 }
 
 .profile .userProfile {
-  width: 17rem;
-  height: 17rem;
+  width: 15rem;
+  height: 15rem;
   object-fit: cover;
   border-radius: 8.5rem;
+  border: 5px solid rgb(245, 201, 3);
+  margin-left: 15px;
 }
 
 .iEdit {
   position: absolute;
-  bottom: 2rem;
-  right: 1rem;
+  bottom: 5rem;
+  right: 2rem;
 }
 
 .iEdit:hover {
-  bottom: 2.1rem;
-  right: 1.1rem;
+  bottom: 5rem;
+  right: 2rem;
 }
 
 .profile h1 {
@@ -60,6 +61,31 @@ body {
   font-size: 2rem;
   color: #000;
   font-family: var(--global-font-family);
+}
+
+.list:hover {
+  border-bottom: 3px solid rgb(238, 194, 0) !important;
+}
+.titleImage {
+  position: absolute;
+  width: 40%;
+  height: 1%;
+  display: flex;
+  justify-content: start;
+  align-items: flex-end;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.titlebtn {
+  display: flex;
+  color: white;
+  font-weight: 700;
+  justify-content: end;
+  margin-top: -13%;
 }
 
 @media screen and (max-width: 720px) {
@@ -84,7 +110,7 @@ body {
 @media screen and (max-width: 520px) {
   .profile {
     position: relative;
-    margin-top: 10rem;
+    margin-top: 3rem;
     width: 17rem;
     height: 20rem;
     flex-direction: column;

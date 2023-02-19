@@ -1,30 +1,16 @@
 @font-face {
-  font-family: 'Airbnb Cereal App';
+  font-family: "Airbnb Cereal App";
   src: url(../../assets/font/AirbnbCereal.otf);
 }
 
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --global-font-family: airbnb;
-  --global-text-primary: #ffffff;
-  --global-text-secondary: #2e266f;
-  --global-color-primary: #ffffff;
-  --global-color-secondary: #efc81a;
-  --global-text-md: 1.8rem;
-}
-
 .customBody {
-  font-family: 'Airbnb Cereal App' !important;
-  background: linear-gradient(90deg, #efc81a 5%, rgba(255, 255, 255, 1) 5%, rgba(255, 255, 255, 1) 95%);
+  font-family: "Airbnb Cereal App" !important;
+  background: linear-gradient(
+    90deg,
+    #efc81a 5%,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 1) 95%
+  );
 }
 
 .h3 {

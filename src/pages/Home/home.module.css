@@ -1,6 +1,6 @@
 @font-face {
   font-family: airbnb;
-  src: url('../../assets/font/AirbnbCereal.otf');
+  src: url("../../assets/font/AirbnbCereal.otf");
 }
 
 :root {
@@ -176,6 +176,10 @@
   display: flex;
   flex-direction: row;
   overflow-y: auto;
+  width: 460px;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid yellow;
 }
 
 .buttonSend {
@@ -184,7 +188,7 @@
   color: var(--yellowHover);
   position: absolute;
   right: 10px;
-  top: 20px;
+  top: 15px;
 }
 
 @media screen and (max-width: 575px) {
