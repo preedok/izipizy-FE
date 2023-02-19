@@ -232,7 +232,7 @@ const Profile = () => {
   const isLogin = localStorage.getItem("token");
   return (
     <>
-      {!isLogin ? <Navs /> : <NavbarLogin />}
+      <Navs />
       <section className={style.margin}>
         <div className={style.boxContainer}>
           <div className={style.box}>
