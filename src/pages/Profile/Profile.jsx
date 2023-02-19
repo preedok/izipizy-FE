@@ -191,6 +191,7 @@ const Profile = () => {
         console.log(error);
       });
   };
+
   const [image, setImage] = useState(null);
   const handleImageChange = (event) => {
     setImage(event.target.files[0]);
@@ -212,7 +213,7 @@ const Profile = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data.data);
         Swal.fire({
           title: "Delete Success",
           text: `Your Recipe Delete Success`,
@@ -229,7 +230,6 @@ const Profile = () => {
     AOS.refresh();
   }, []);
 
-  const isLogin = localStorage.getItem("token");
   return (
     <>
       <Navs />

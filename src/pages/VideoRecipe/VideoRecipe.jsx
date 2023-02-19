@@ -21,7 +21,6 @@ const Video = () => {
       })
       .catch((error) => {
         console.error(error);
-        // router.push('/login')
       });
   }, [id]);
 
@@ -50,8 +49,7 @@ const Video = () => {
                 </div>
                 <div>
                   <h3 className={`${style.titleVideo} ${style.h3} my-2`}>
-                    Beef Steak with Curry Sauce - [Step 4] <br /> Cut the
-                    condiment and then mix it
+                    {data.recipe_name}
                   </h3>
                   <p className={`${style.customDate} text-muted`}>
                     3 month ago
@@ -77,10 +75,7 @@ const Video = () => {
                   ></iframe>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
-                  <h5 className="my-2">
-                    Beef Steak with Curry Sauce - [Step 5] <br />
-                    Saute condiments together until turn brown
-                  </h5>
+                  <h5 className="my-2">{data.recipe_name}</h5>
                   <p className="text-muted">3 month ago</p>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
@@ -94,10 +89,7 @@ const Video = () => {
                       allowfullscreen
                     ></iframe>
                   </div>
-                  <h5 className="my-2">
-                    Beef Steak with Curry Sauce - [Step 6] <br />
-                    Roast beef until it’s medium rare
-                  </h5>
+                  <h5 className="my-2">{data.recipe_name}</h5>
                   <p className="text-muted">3 month ago</p>
                 </div>
                 <div
@@ -115,10 +107,7 @@ const Video = () => {
                   ></iframe>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
-                  <h5 className="my-2">
-                    Beef Steak with Curry Sauce - [Step 7] <br />
-                    Roast beef until it’s medium rare
-                  </h5>
+                  <h5 className="my-2">{data.recipe_name}</h5>
                   <p className="text-muted">3 month ago</p>
                 </div>
               </div>

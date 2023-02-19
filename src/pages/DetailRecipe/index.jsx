@@ -25,7 +25,7 @@ const DetailRecipe = () => {
   const [recipe, setRecipe] = useState([{}]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`)
+      .get(`https://izipizy-team.cyclic.app/api/v1/recipe/${id}`)
       .then((response) => {
         setRecipe(response.data.data);
       })
@@ -77,7 +77,7 @@ const DetailRecipe = () => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_BACKEND}/api/v1/comment`, comments, {
+      .post(`https://izipizy-team.cyclic.app/api/v1/comment`, comments, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,7 @@ const DetailRecipe = () => {
   const [dataComment, setDataComments] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/comment/recipe/${id}`)
+      .get(`https://izipizy-team.cyclic.app/api/v1/comment/recipe/${id}`)
       .then((response) => {
         setDataComments(response.data.data);
       })

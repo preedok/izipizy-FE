@@ -25,7 +25,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe`)
+      .get(`https://izipizy-team.cyclic.app/api/v1/recipe`)
       .then((response) => {
         setRecipe(response.data.data);
       })
