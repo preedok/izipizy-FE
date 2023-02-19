@@ -41,6 +41,8 @@ body {
   height: 15rem;
   object-fit: cover;
   border-radius: 8.5rem;
+  border: 5px solid rgb(245, 201, 3);
+  margin-left: 15px;
 }
 
 .iEdit {
@@ -63,6 +65,27 @@ body {
 
 .list:hover {
   border-bottom: 3px solid rgb(238, 194, 0) !important;
+}
+.titleImage {
+  position: absolute;
+  width: 40%;
+  height: 1%;
+  display: flex;
+  justify-content: start;
+  align-items: flex-end;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.titlebtn {
+  display: flex;
+  color: white;
+  font-weight: 700;
+  justify-content: end;
+  margin-top: -13%;
 }
 
 @media screen and (max-width: 720px) {

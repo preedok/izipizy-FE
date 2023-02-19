@@ -28,6 +28,7 @@
 .input {
   background-color: #a8a8a8 !important;
   height: 65px;
+  width: 73px;
 }
 .activeCustom {
   font-weight: bold !important;
@@ -44,4 +45,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .imageAdd {
+    width: 200px;
+  }
+  .input {
+    background-color: #a8a8a8 !important;
+    width: 40px;
+  }
 }

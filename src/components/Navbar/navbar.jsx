@@ -1,8 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import login from "../../assets/images/profile/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
-const navbar = () => {
+const Navbar = () => {
+  const navigate = useNavigate();
+
+  const [data, setData] = useState();
+  const [isActive, setIsActive] = useState(false);
+  const [name, setName] = useState();
+
+  useEffect(() => {
+    const data = localStorage.getItem(`users`);
+    const getName = localStorage.getItem("name");
+
+    if (data) {
+      setData(data);
+      setIsActive(true);
+      setName(getName);
+    }
+  }, []);
+
+  const onLogout = (e) => {
+    // e.prevenDefault();
+    localStorage.clear();
+    Swal.fire({
+      title: "Logout Success",
+      text: `Logout Success!`,
+      icon: "success",
+    });
+    return navigate("/login");
+  };
+
+  // get user
+  const [profile, setProfile] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`https://izipizy-team.cyclic.app/api/v1/user/profile`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setProfile(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div className="container">
@@ -31,14 +78,42 @@ const navbar = () => {
                   Profile
                 </Link>
               </div>
-              <div className="ms-auto">
-                <Link to="/profile" className="nav-link">
-                  <img className="rounded-5" src={login} alt="" />
+              {isActive ? (
+                <div className="ms-auto">
+                  <Link to="/profile" className="nav-link">
+                    <img
+                      style={{ border: "3px solid yellow" }}
+                      width="40"
+                      height="40"
+                      className="rounded-5 me-2"
+                      src={profile.image_profile}
+                      alt=""
+                    />
+                    <span style={{ fontWeight: "600" }}>{profile.name}</span>
+                  </Link>
+                </div>
+              ) : (
+                <div className="ms-auto">
+                  <Link to="/profile" className="nav-link">
+                    <img className="rounded-5" src={login} alt="" />
+                  </Link>
+                </div>
+              )}
+
+              {isActive ? (
+                <button
+                  onClick={onLogout}
+                  className="btn btn-danger  ms-3 rounded-2"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link to="/login" className="nav-link">
+                  <button className="btn btn-outline-success  ms-3 rounded-2">
+                    Login
+                  </button>
                 </Link>
-              </div>
-              <Link to="/login" className="nav-link">
-                <button className="btn  ms-3 rounded-4">Login</button>
-              </Link>
+              )}
             </div>
           </div>
         </nav>
@@ -47,4 +122,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar;
