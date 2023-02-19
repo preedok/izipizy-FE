@@ -44,7 +44,7 @@ const DetailRecipe = () => {
   };
 
   // create like
-  let count = 0; //ambil dari data recipe.like
+  let count = `${recipe.liked_count}`; //ambil dari data recipe.like
   const [likes, setLikes] = useState(count);
   const [likeActive, setLikeActive] = useState(false);
 
@@ -54,6 +54,8 @@ const DetailRecipe = () => {
       setLikes(likes + 1);
     }
   };
+
+  console.log(likes);
 
   let ingredient = `${recipe.ingredients}`;
   let split = ingredient.split('-');
@@ -71,8 +73,6 @@ const DetailRecipe = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  console.log(comments);
 
   const token = localStorage.getItem('token');
   const handleSendComment = (e) => {

@@ -44,3 +44,10 @@
   font-weight: 700;
   margin-bottom: 0;
 }
+
+.imgComment {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
