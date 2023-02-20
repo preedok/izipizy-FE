@@ -7,7 +7,7 @@ export const userLoginSuccess = () => async (dispatch) => {
     dispatch({ type: 'userLoginSuccess', payload: 'Login success' });
   } catch (error) {
     Swal.fire({
-      text: error.response.data.message,
+      text: `${error.response.data.message}`,
       icon: 'warning',
     });
   }

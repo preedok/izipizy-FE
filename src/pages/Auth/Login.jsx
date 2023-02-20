@@ -21,9 +21,18 @@ const Login = () => {
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/v1/user/login`, form)
       .then((response) => {
+<<<<<<< HEAD
+        if (response.data.status !== 'success') {
+          Swal.fire({
+            title: 'Login Failed',
+            text: `${response.data.message}`,
+            icon: 'warning',
+          });
+=======
         console.log(response);
         if (response.data.status !== "success") {
           alert(response.data.message);
+>>>>>>> 3edae89157730a14ace0cf17c3bbd5a463e51e3e
         } else {
           const token = response.data.data.token;
           localStorage.setItem("token", token);
@@ -36,17 +45,29 @@ const Login = () => {
           localStorage.setItem("id", JSON.stringify(response.data.data.id));
         }
         Swal.fire({
+<<<<<<< HEAD
+          title: 'Login Success',
+          text: `${response.data.message}`,
+          icon: 'success',
+=======
           title: "Login Success",
           text: `Login Success!`,
           icon: "success",
+>>>>>>> 3edae89157730a14ace0cf17c3bbd5a463e51e3e
         });
         return navigate("/profile");
       })
-      .catch(() => {
+      .catch((error) => {
         Swal.fire({
+<<<<<<< HEAD
+          title: 'Login Failed',
+          text: `${error.response.data.message}`,
+          icon: 'warning',
+=======
           title: "Login Failed",
           text: `Make sure your data is correct!`,
           icon: "warning",
+>>>>>>> 3edae89157730a14ace0cf17c3bbd5a463e51e3e
         });
       });
   };

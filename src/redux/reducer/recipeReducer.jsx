@@ -1,6 +1,7 @@
 const initialState = {
   recipe: [],
   detailRecipe: [],
+  comment: [],
 };
 
 export const recipeReducer = (state = initialState, action) => {
@@ -8,6 +9,13 @@ export const recipeReducer = (state = initialState, action) => {
     return {
       ...state,
       recipe: action.payload,
+      isLoading: false,
+    };
+  } else if (action.type === 'getAllRecipePopular') {
+    return {
+      ...state,
+      recipe: action.payload,
+      isLoading: false,
     };
   } else if (action.type === 'createRecipe') {
     return state;
@@ -19,6 +27,13 @@ export const recipeReducer = (state = initialState, action) => {
     return {
       ...state,
       detailRecipe: action.payload,
+      isLoading: false,
+    };
+  } else if (action.type === 'getComment') {
+    return {
+      ...state,
+      comment: action.payload,
+      isLoading: false,
     };
   } else {
     return state;
