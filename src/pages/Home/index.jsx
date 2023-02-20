@@ -15,6 +15,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useDispatch } from 'react-redux';
 import { getRecipe, getRecipePopular } from '../../redux/action/recipeAction';
+import { LineWave } from 'react-loader-spinner';
 
 const Home = () => {
   useEffect(() => {
@@ -51,18 +52,47 @@ const Home = () => {
 
   const [popular, setPopular] = useState([{}]);
   const [counter, setCounter] = useState(1);
+  const [dataPopular, setDataPopular] = useState([]);
+  const [page, setPages] = useState({
+    currentPage: 1,
+    page: 1,
+  });
+
+  const totalPage = Math.ceil(`${page.totalData}` / `${page.limit}`);
 
   // popular by limit, sortBy, sort
   useEffect(() => {
-    dispatch(getRecipePopular(setPopular, counter));
+    dispatch(getRecipePopular(setPopular));
   }, []);
 
+  useEffect(() => {
+    getRecipePop(counter);
+  }, []);
+
+  const getRecipePop = (counter) => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe?sortby=likes&sort=asc${counter ? `&page=${counter}` : ''}&limit=3`)
+      .then((response) => {
+        setDataPopular(response.data.data);
+        setPages(response.data.pagination);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   const previous = () => {
-    setCounter(counter - 1);
+    if (counter > 1) {
+      setCounter(counter - 1);
+      getRecipePop(counter);
+    }
   };
 
   const next = () => {
-    setCounter(counter + 1);
+    setCounter(counter === totalPage ? totalPage : counter + 1);
+    console.log(counter);
+    // setCounter(counter + 1);
+    // getRecipePop(counter);
   };
 
   const [loading, setLoading] = useState(true);
@@ -72,6 +102,7 @@ const Home = () => {
       setLoading(false);
     }, 2000);
   }, []);
+
   if (loading) {
     return (
       <div
@@ -166,20 +197,24 @@ const Home = () => {
 
           <div className="container">
             <div className={`row ${style.rowResponsive}`}>
-              {popular.map((item) => {
-                return (
-                  <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-down" data-aos-duration="1000">
-                    <Link className={style.span} to={`/detailRecipe/${item.id}`}>
-                      <div className={style.wrapperImgRecipe}>
-                        <img src={item.image} crossOrigin="anonymous" className={style.imgRecipe} alt="img-recipe" />
-                        <div className={style.wrapperTitle}>
-                          <span className={style.productType}>{item.name_recipe}</span>
+              {dataPopular.length === 0 ? (
+                <p>Data not Found</p>
+              ) : (
+                dataPopular.map((item) => {
+                  return (
+                    <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
+                      <Link className={style.span} to={`/detailRecipe/${item.id}`}>
+                        <div className={style.wrapperImgRecipe}>
+                          <img src={item.image} crossOrigin="anonymous" className={style.imgRecipe} alt="img-recipe" />
+                          <div className={style.wrapperTitle}>
+                            <span className={style.productType}>{item.name_recipe}</span>
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
+                      </Link>
+                    </div>
+                  );
+                })
+              )}
             </div>
 
             <div className="row text-center">
@@ -188,7 +223,9 @@ const Home = () => {
                   <button className={style.buttonPrevious} onClick={previous}>
                     Previous
                   </button>
-                  <span className={style.page}>1 / 5</span>
+                  <span className={style.page}>
+                    {page.currentPage} / {page.totalPage}
+                  </span>
                   <button className={style.buttonNext} onClick={next}>
                     Next
                   </button>

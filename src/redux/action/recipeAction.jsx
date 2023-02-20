@@ -19,7 +19,7 @@ export const getRecipe = (setRecipe) => async (dispatch) => {
 // get Recipe Popular
 export const getRecipePopular = (setPopular, counter) => async (dispatch) => {
   try {
-    axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe?sortby=likes&sort=asc&page=${counter}&limit=100`).then((response) => {
+    axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe?sortby=likes&sort=asc&limit=100`).then((response) => {
       setPopular(response.data.data);
     });
     dispatch({ type: 'getAllRecipePopular', payload: 'success' });
