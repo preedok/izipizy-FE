@@ -22,7 +22,7 @@ const DetailRecipe = () => {
 
   const { id } = useParams();
   // get recipe by id recipe
-  const [recipe, setRecipe] = useState([]);
+  const [recipe, setRecipe] = useState([{}]);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`)
@@ -43,17 +43,24 @@ const DetailRecipe = () => {
 
   // create like
   let count = `${recipe.liked_count}`; //ambil dari data recipe.like
-  const [likes, setLikes] = useState(count);
+  const [likes, setLikes] = useState({
+    recipe_id: `${id}`,
+    liked_count: `${count}`,
+  });
+
+  console.log(likes);
+
   const [likeActive, setLikeActive] = useState(false);
 
   const handleLike = () => {
     if (!likeActive) {
       setLikeActive(true);
-      setLikes(likes + 1);
+      setLikes({
+        ...likes,
+        likes_id: count++,
+      });
     }
   };
-
-  console.log(likes);
 
   let ingredient = `${recipe.ingredients}`;
   let split = ingredient.split('-');
