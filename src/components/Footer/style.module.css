@@ -54,7 +54,21 @@
   color: black !important;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .footerLinks {
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  .customInnerFooter {
+    flex-direction: column;
+  }
+  .customArcademy {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
   .footerLinks {
     margin-left: 0;
     font-size: 14px;

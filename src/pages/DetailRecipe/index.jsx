@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 // import axios from 'axios';
 
-import style from './detail.module.css';
+import style from "./detail.module.css";
 
-import Navbar from '../../components/Navbar/navbar';
-import Footer from '../../components/Footer/Footer';
-import CommentList from '../../components/CommentList';
+import Navbar from "../../components/Navbar/navbar";
+import Footer from "../../components/Footer/Footer";
+import CommentList from "../../components/CommentList";
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { LineWave } from "react-loader-spinner";
 
 const DetailRecipe = () => {
   // effect
@@ -63,9 +64,9 @@ const DetailRecipe = () => {
         .then((response) => {
           console.log(response.data.data);
           Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Success',
+            position: "top-end",
+            icon: "success",
+            title: "Success",
             text: `${response.data.message}`,
             showConfirmButton: false,
             timer: 1500,
@@ -75,8 +76,8 @@ const DetailRecipe = () => {
           // handle error
           console.log(error);
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+            icon: "error",
+            title: "Oops...",
             text: `${error.response.data.message}`,
           });
         });
@@ -84,12 +85,12 @@ const DetailRecipe = () => {
   };
 
   let ingredient = `${recipe.ingredients}`;
-  let split = ingredient.split('-');
+  let split = ingredient.split("-");
   split.shift();
 
   // create comment
   const [comments, setComments] = useState({
-    comment_text: '',
+    comment_text: "",
     recipe_id: `${id}`,
   });
 
@@ -100,7 +101,7 @@ const DetailRecipe = () => {
     });
   };
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const handleSendComment = (e) => {
     e.preventDefault();
 
@@ -113,9 +114,9 @@ const DetailRecipe = () => {
       .then((res) => {
         console.log(res);
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Success',
+          position: "top-end",
+          icon: "success",
+          title: "Success",
           text: `${res.data.message}`,
           showConfirmButton: false,
           timer: 1500,
@@ -125,8 +126,8 @@ const DetailRecipe = () => {
       .catch((err) => {
         console.log(err);
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: "error",
+          title: "Oops...",
           text: `${err.response.data.message}`,
         });
       });
@@ -145,21 +146,71 @@ const DetailRecipe = () => {
       });
   }, []);
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
+
   return (
     <body className={style.body}>
       <div className="container-fluid">
         <div className="container">
           <Navbar />
           <div className="row text-center mt-4">
-            <div className="col-lg-12" data-aos="zoom-in-left" data-aos-duration="1000">
-              <h1 className={`fw-bold ${style.textLanding}`}>{recipe.name_recipe}</h1>
+            <div
+              className="col-lg-12"
+              data-aos="zoom-in-left"
+              data-aos-duration="1000"
+            >
+              <h1 className={`fw-bold ${style.textLanding}`}>
+                {recipe.name_recipe}
+              </h1>
             </div>
           </div>
 
           <div className="row mb-5">
-            <div className="col-lg-12 text-center" data-aos="zoom-in-right" data-aos-duration="1000">
+            <div
+              className="col-lg-12 text-center"
+              data-aos="zoom-in-right"
+              data-aos-duration="1000"
+            >
               <div className={style.wrapperImg}>
-                <img src={recipe.image} crossOrigin="anonymous" className={`position-relative ${style.detailImg}`} alt="popular-img" />
+                <img
+                  src={recipe.image}
+                  crossOrigin="anonymous"
+                  className={`position-relative ${style.detailImg}`}
+                  alt="popular-img"
+                />
 
                 <div className={style.wrapperButton}>
                   <button className={style.buttonSave}>
@@ -174,7 +225,11 @@ const DetailRecipe = () => {
           </div>
 
           <div className="row mb-5">
-            <div className="col-lg-12" data-aos="zoom-in-left" data-aos-duration="1000">
+            <div
+              className="col-lg-12"
+              data-aos="zoom-in-left"
+              data-aos-duration="1000"
+            >
               <h5 className="fw-bolder">Ingredients</h5>
               <ul type="stripe">
                 {split.map((item) => (
@@ -185,22 +240,34 @@ const DetailRecipe = () => {
           </div>
 
           <div className="row mb-5">
-            <div className="col-lg-3" data-aos="zoom-in-right" data-aos-duration="1000">
+            <div
+              className="col-lg-3"
+              data-aos="zoom-in-right"
+              data-aos-duration="1000"
+            >
               <h5 className="fw-bolder mb-4">Video Step</h5>
 
-              <button type="button" className={style.buttonStepVideo} onClick={handleVideo}>
+              <button
+                type="button"
+                className={style.buttonStepVideo}
+                onClick={handleVideo}
+              >
                 <i class="bi bi-play"></i>
               </button>
             </div>
           </div>
 
           <div className="row text-center mb-5">
-            <div className="col-lg-12" data-aos="zoom-in-right" data-aos-duration="1000">
+            <div
+              className="col-lg-12"
+              data-aos="zoom-in-right"
+              data-aos-duration="1000"
+            >
               <div className="form-floating mb-3">
                 <form onSubmit={handleSendComment}>
                   <input
                     className={`form-control ${style.formControl}`}
-                    style={{ height: '200px', backgroundColor: '#efefef' }}
+                    style={{ height: "200px", backgroundColor: "#efefef" }}
                     placeholder="Leave a comment here"
                     type="text"
                     name="comment_text"
@@ -216,12 +283,24 @@ const DetailRecipe = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-12" data-aos="zoom-in-left" data-aos-duration="1000">
+            <div
+              className="col-lg-12"
+              data-aos="zoom-in-left"
+              data-aos-duration="1000"
+            >
               <h5 className="fw-bolder mb-4">Comment</h5>
             </div>
 
-            <div className="col-lg-6" data-aos="zoom-in-right" data-aos-duration="1000">
-              {dataComment.length > 0 ? <CommentList dataComment={dataComment} /> : <p>Comment not found!</p>}
+            <div
+              className="col-lg-6"
+              data-aos="zoom-in-right"
+              data-aos-duration="1000"
+            >
+              {dataComment.length > 0 ? (
+                <CommentList dataComment={dataComment} />
+              ) : (
+                <p>Comment not found!</p>
+              )}
             </div>
           </div>
         </div>
