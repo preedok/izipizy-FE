@@ -53,12 +53,13 @@ const Register = () => {
         UserRegister(body)
           .then((response) => {
             Swal.fire({
-              title: `${response.data.message}`,
+              title: `Register`,
               text: 'Register Successfully!',
               icon: 'success',
               dangerMode: true,
             }).then(async (confirm) => {
               if (confirm) {
+                console.log(response.data.message);
                 return Navigate('/login');
               }
             });
