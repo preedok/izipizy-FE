@@ -117,7 +117,7 @@ const DetailRecipe = () => {
   let ingredient = `${recipe.ingredients}`;
   let split = ingredient.split('-');
   split.shift();
-
+  console.log(split);
   // create comment
   const [comments, setComments] = useState({
     comment_text: '',

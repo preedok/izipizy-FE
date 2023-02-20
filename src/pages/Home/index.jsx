@@ -9,6 +9,7 @@ import HeadingText from '../../components/HeadingText';
 import ProductText from '../../components/ProductText';
 import Footer from '../../components/Footer/Footer.jsx';
 import { Link, useNavigate } from 'react-router-dom';
+import { LineWave } from 'react-loader-spinner';
 
 // aos
 import AOS from 'aos';
