@@ -102,6 +102,7 @@ const Home = () => {
       setLoading(false);
     }, 2000);
   }, []);
+
   if (loading) {
     return (
       <div
