@@ -25,7 +25,7 @@ const Profile = () => {
   const getOwnProduct = () => {
     const token = localStorage.getItem("token");
     axios
-      .get(`https://izipizy-team.cyclic.app/api/v1/recipe/myrecipe`, {
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/myrecipe`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,7 +44,7 @@ const Profile = () => {
   const getSavedProduct = () => {
     const token = localStorage.getItem("token");
     axios
-      .get(`https://izipizy-team.cyclic.app/api/v1/saved/`, {
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/saved/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,7 +62,7 @@ const Profile = () => {
   const getLikedProduct = () => {
     const token = localStorage.getItem("token");
     axios
-      .get(`https://izipizy-team.cyclic.app/api/v1/liked/`, {
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/liked/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -79,7 +79,7 @@ const Profile = () => {
   const [profile, setProfile] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://izipizy-team.cyclic.app/api/v1/user/profile`, {
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/user/profile`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -103,7 +103,7 @@ const Profile = () => {
     // let formData = new FormData(e.target);
     // formData.append("id", id);
     axios
-      .put(`https://izipizy-team.cyclic.app/api/v1/user/edit`, {
+      .put(`${process.env.REACT_APP_BACKEND}/api/v1/user/edit`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -148,7 +148,7 @@ const Profile = () => {
   });
   const getDetailProduct = (id) => {
     axios
-      .get(`https://izipizy-team.cyclic.app/api/v1/recipe/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`)
       .then((res) => {
         console.log(res.data.data);
         setDetailProduct(res.data.data);
@@ -171,7 +171,7 @@ const Profile = () => {
     formData.append("image", image, image.name);
     axios
       .put(
-        `https://izipizy-team.cyclic.app/api/v1/recipe/${detailProduct.id}`,
+        `${process.env.REACT_APP_BACKEND}/api/v1/recipe/${detailProduct.id}`,
         formData,
         {
           headers: {
@@ -207,7 +207,7 @@ const Profile = () => {
   const deleteProduct = (id) => {
     const token = localStorage.getItem("token");
     axios
-      .delete(`https://izipizy-team.cyclic.app/api/v1/recipe/${id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

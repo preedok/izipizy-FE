@@ -14,7 +14,7 @@ const Video = () => {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`https://izipizy-team.cyclic.app/api/v1/recipe/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`)
       .then((response) => {
         console.log(response.data.data);
         setData(response.data.data);
