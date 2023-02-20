@@ -98,44 +98,6 @@ const Profile = () => {
   const id = data.id;
 
   // update user
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    // let formData = new FormData(e.target);
-    // formData.append("id", id);
-    axios
-      .put(`${process.env.REACT_APP_BACKEND}/api/v1/user/edit`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data.data);
-        Swal.fire({
-          title: "Update Success",
-          text: `Your account have been updated`,
-          icon: "success",
-        }).then(() => {
-          navigate("/profile");
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        Swal.fire({
-          title: "Update Failed",
-          text: `Update Failed`,
-          icon: "error",
-        });
-      });
-  };
-
-  const hiddenFileInput = useRef(null);
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
-  };
-  const handleChange = (event) => {
-    const fileUploaded = event.target.files[0];
-    console.log(fileUploaded);
-  };
 
   // get detail recipe
   const [detailProduct, setDetailProduct] = useState({
@@ -293,9 +255,9 @@ const Profile = () => {
                         ></button>
                       </div>
                       <form
-                        onSubmit={(e) => {
-                          handleUpdate(e);
-                        }}
+                      // onSubmit={(e) => {
+                      //   handleUpdate(e);
+                      // }}
                       >
                         <div className="modal-body">
                           <input
@@ -304,7 +266,9 @@ const Profile = () => {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             placeholder="Name"
-                            defaultValue={profile.name}
+                            // name="name"
+                            // value={profile.name}
+                            // onChange={(e) => handleInputChanges(e)}
                           />
                           <input
                             type="file"
@@ -312,9 +276,8 @@ const Profile = () => {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             placeholder="Change Photo"
-                            onChange={(e) => handleChange(e)}
-                            ref={hiddenFileInput}
-                            defaultValue={profile.image}
+                            // name="image_profile"
+                            // onChange={handleImageChanges}
                           />
                         </div>
                         <div className="modal-footer">
