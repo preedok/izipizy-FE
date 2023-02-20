@@ -40,6 +40,10 @@ const Home = () => {
     navigate(`/detailRecipe/${recipe[0].id}`);
   };
 
+  const handleDetailPopular = () => {
+    navigate(`/detailRecipe/${popular[0].id}`);
+  };
+
   const [searchRecipe, setSearchRecipe] = useState('');
   const handleSearch = () => {
     window.location.replace(`/search?search=${searchRecipe}`);
@@ -104,7 +108,7 @@ const Home = () => {
               </div>
 
               <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-                <ProductText cta={handleDetail} headingTitleRecipe={popular[0].name_recipe} descriptionTitleRecipe={popular[0].description} />
+                <ProductText cta={handleDetailPopular} headingTitleRecipe={popular[0].name_recipe} descriptionTitleRecipe={popular[0].description} />
               </div>
             </div>
           </div>
