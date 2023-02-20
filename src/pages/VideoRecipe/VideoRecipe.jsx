@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import style from './videorecipe.module.css';
-import Navs from '../../components/Navbar/navbar';
-import Footer from '../../components/Footer/Footer';
-import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import style from "./videorecipe.module.css";
+import Navs from "../../components/Navbar/navbar";
+import Footer from "../../components/Footer/Footer";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { LineWave } from "react-loader-spinner";
 
 // aos
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Video = () => {
   const [data, setData] = useState([]);
@@ -21,7 +22,6 @@ const Video = () => {
       })
       .catch((error) => {
         console.error(error);
-        // router.push('/login')
       });
   }, [id]);
 
@@ -30,6 +30,40 @@ const Video = () => {
     AOS.refresh();
   }, []);
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
   return (
     <>
       <div className={style.customBody}>
@@ -39,26 +73,45 @@ const Video = () => {
             <div className={`${style.grid12} ${style.gapMedium}`}>
               <div className={`${style.cusGridLg8} mx-5`}>
                 <div className={style.aspectLock}>
-                  <iframe className={style.embedVideo} src={data.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe
+                    className={style.embedVideo}
+                    src={data.video}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
                 </div>
                 <div>
                   <h3 className={`${style.titleVideo} ${style.h3} my-2`}>
-                    Beef Steak with Curry Sauce - [Step 4] <br /> Cut the condiment and then mix it
+                    {data.name_recipe}
                   </h3>
-                  <p className={`${style.customDate} text-muted`}>3 month ago</p>
+                  <p className={`${style.customDate} text-muted`}>
+                    {data.created_at}
+                  </p>
                 </div>
               </div>
-              <div className={`${style.cusGridLg4} ${style.flexCol} ${style.gapMedium}`}>
+              <div
+                className={`${style.cusGridLg4} ${style.flexCol} ${style.gapMedium}`}
+              >
                 <h3 className={style.h3}>Next</h3>
-                <div className={style.aspectLock} data-aos="zoom-in-up" data-aos-duration="1000">
-                  <iframe className={style.embedVideo} src={data.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div
+                  className={style.aspectLock}
+                  data-aos="zoom-in-up"
+                  data-aos-duration="1000"
+                >
+                  <iframe
+                    className={style.embedVideo}
+                    src={data.video}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
-                  <h5 className="my-2">
-                    Beef Steak with Curry Sauce - [Step 5] <br />
-                    Saute condiments together until turn brown
-                  </h5>
-                  <p className="text-muted">3 month ago</p>
+                  <h5 className="my-2">{data.name_recipe}</h5>
+                  <p className="text-muted">{data.created_at}</p>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
                   <div className={style.aspectLock}>
@@ -71,21 +124,26 @@ const Video = () => {
                       allowfullscreen
                     ></iframe>
                   </div>
-                  <h5 className="my-2">
-                    Beef Steak with Curry Sauce - [Step 6] <br />
-                    Roast beef until it’s medium rare
-                  </h5>
-                  <p className="text-muted">3 month ago</p>
+                  <h5 className="my-2">{data.name_recipe}</h5>
+                  <p className="text-muted">{data.created_at}</p>
                 </div>
-                <div className={style.aspectLock} data-aos="zoom-in-up" data-aos-duration="1000">
-                  <iframe className={style.embedVideo} src={data.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div
+                  className={style.aspectLock}
+                  data-aos="zoom-in-up"
+                  data-aos-duration="1000"
+                >
+                  <iframe
+                    className={style.embedVideo}
+                    src={data.video}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
-                  <h5 className="my-2">
-                    Beef Steak with Curry Sauce - [Step 7] <br />
-                    Roast beef until it’s medium rare
-                  </h5>
-                  <p className="text-muted">3 month ago</p>
+                  <h5 className="my-2">{data.name_recipe}</h5>
+                  <p className="text-muted">{data.created_at}</p>
                 </div>
               </div>
             </div>

@@ -12,7 +12,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import { useDispatch } from 'react-redux';
+import { getComment, getDetailRecipe } from '../../redux/action/recipeAction';
+import { LineWave } from 'react-loader-spinner';
 const DetailRecipe = () => {
   // effect
   useEffect(() => {
@@ -21,44 +23,94 @@ const DetailRecipe = () => {
   }, []);
 
   const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // get recipe by id recipe
   const [recipe, setRecipe] = useState([{}]);
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`)
-      .then((response) => {
-        setRecipe(response.data.data);
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      });
+    dispatch(getDetailRecipe(setRecipe, id));
   }, []);
-
-  const navigate = useNavigate();
 
   const handleVideo = () => {
     navigate(`/video/${id}`);
   };
-
-  // create like
-  let count = `${recipe.liked_count}`; //ambil dari data recipe.like
-  const [likes, setLikes] = useState({
+  // create save
+  const [save, setSave] = useState({
     recipe_id: `${id}`,
-    liked_count: `${count}`,
   });
 
-  console.log(likes);
+  const [saveActive, setSaveActive] = useState(false);
 
+  const handleSave = () => {
+    if (!saveActive) {
+      setSaveActive(true);
+      axios
+        .post(`${process.env.REACT_APP_BACKEND}/api/v1/saved`, save, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success',
+            text: `${response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((error) => {
+          // handle error
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
+    }
+  };
+
+  // create like
+  const [likes, setLikes] = useState({
+    recipe_id: `${id}`,
+  });
   const [likeActive, setLikeActive] = useState(false);
 
   const handleLike = () => {
     if (!likeActive) {
       setLikeActive(true);
-      setLikes({
-        ...likes,
-        likes_id: count++,
-      });
+      axios
+        .post(`${process.env.REACT_APP_BACKEND}/api/v1/liked`, likes, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success',
+            text: `${response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((error) => {
+          // handle error
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
     }
   };
 
@@ -114,15 +166,32 @@ const DetailRecipe = () => {
   // get data comment by user id
   const [dataComment, setDataComments] = useState([]);
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/comment/recipe/${id}`)
-      .then((response) => {
-        setDataComments(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-      });
+    dispatch(getComment(setDataComments, id));
   }, []);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: '50px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: '#efc81a',
+        }}
+      >
+        <LineWave height="145" width="140" color="white" ariaLabel="line-wave" wrapperStyle={{}} wrapperClass="" visible={true} firstLineColor="" middleLineColor="" lastLineColor="" />
+      </div>
+    );
+  }
 
   return (
     <body className={style.body}>
@@ -141,9 +210,16 @@ const DetailRecipe = () => {
                 <img src={recipe.image} crossOrigin="anonymous" className={`position-relative ${style.detailImg}`} alt="popular-img" />
 
                 <div className={style.wrapperButton}>
-                  <button className={style.buttonSave}>
-                    <i className="bi bi-bookmark"></i>
-                  </button>
+                  {!saveActive ? (
+                    <button className={style.buttonSave} onClick={handleSave}>
+                      <i className="bi bi-bookmark"></i>
+                    </button>
+                  ) : (
+                    <button className={style.buttonSaveActive} onClick={handleSave}>
+                      <i className="bi bi-bookmark"></i>
+                    </button>
+                  )}
+
                   <button className={style.buttonLike} onClick={handleLike}>
                     <i className="bi bi-hand-thumbs-up"></i>
                   </button>

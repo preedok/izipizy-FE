@@ -1,6 +1,6 @@
 @font-face {
   font-family: airbnb;
-  src: url("../../assets/font/AirbnbCereal.otf");
+  src: url('../../assets/font/AirbnbCereal.otf');
 }
 
 :root {
@@ -136,6 +136,28 @@
   color: #3f3a3a;
 }
 
+.buttonPrevious {
+  border: none;
+  width: 100px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background-color: var(--yellow);
+  margin: 0 20px;
+}
+
+.buttonNext {
+  border: none;
+  width: 100px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background-color: var(--yellow);
+  margin: 0 20px;
+}
+
+.page {
+  padding: 8px 10px;
+}
+
 .btnChat {
   position: fixed;
   bottom: 0px;
@@ -191,23 +213,31 @@
   top: 15px;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 576px) {
   .row {
     text-align: center;
-    padding-top: 80px;
-    margin-bottom: 0;
+    padding-top: 50px !important;
+    margin-bottom: 0 !important;
   }
   .textLanding {
-    font-size: 45px;
+    font-size: 30px;
     color: var(--font-primary);
     font-weight: 500;
-    line-height: 65px;
+    line-height: 45px;
   }
 
   .heroAccsent {
     position: absolute;
     right: 0;
     width: 50%;
+    height: 650px;
+  }
+
+  .heroImg {
+    margin-top: -100px !important;
+    padding: 0;
+
+    border-radius: 15px;
   }
 
   .wrapperImg {
@@ -251,11 +281,19 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .heroAccsent {
+    position: absolute;
+    right: 0;
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .row {
     text-align: center;
     padding-top: 80px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 
   .heroImg {

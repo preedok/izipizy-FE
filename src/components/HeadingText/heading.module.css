@@ -24,4 +24,21 @@ font-face {
   border-left: 8px solid var(--yellow);
   font-family: var(--global-font-family);
   font-weight: 700;
+  padding-left: 20px;
+}
+
+.viewMore {
+  text-decoration: none;
+  color: #3f3a3a;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.viewMore:hover {
+  text-decoration: none;
+  color: #3f3a3a;
+  font-size: 14px;
+  background-color: var(--yellow);
+  padding: 10px 20px;
 }

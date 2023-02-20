@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderAuth from '../../components/HeadingText/HeaderAuth';
 import style from './register.module.css';
 import ButtonAuth from '../../components/ButtonAuth/ButtonAuth';
@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 import Swal from 'sweetalert2';
 import { UserRegister } from '../../redux/action/authAction';
+import { LineWave } from 'react-loader-spinner';
 
 const Register = () => {
   const Navigate = useNavigate();
@@ -53,13 +54,12 @@ const Register = () => {
         UserRegister(body)
           .then((response) => {
             Swal.fire({
-              title: `Register`,
+              title: `${response.data.message}`,
               text: 'Register Successfully!',
               icon: 'success',
               dangerMode: true,
             }).then(async (confirm) => {
               if (confirm) {
-                console.log(response.data.message);
                 return Navigate('/login');
               }
             });
@@ -140,6 +140,30 @@ const Register = () => {
   //     });
   // };
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: '50px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: '#efc81a',
+        }}
+      >
+        <LineWave height="145" width="140" color="white" ariaLabel="line-wave" wrapperStyle={{}} wrapperClass="" visible={true} firstLineColor="" middleLineColor="" lastLineColor="" />
+      </div>
+    );
+  }
+
   return (
     <section>
       <div className="container-fluid">
@@ -179,13 +203,37 @@ const Register = () => {
                         <label style={{ color: '#696f79' }} className="formLabel">
                           Create New Password
                         </label>
-                        <input onChange={(e) => setDataUser({ ...dataUser, password: e.target.value })} type="password" placeholder="Create New Password" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input
+                          onChange={(e) =>
+                            setDataUser({
+                              ...dataUser,
+                              password: e.target.value,
+                            })
+                          }
+                          type="password"
+                          placeholder="Create New Password"
+                          className={`${style.input} form-control mt-2`}
+                          id=""
+                          aria-describedby=""
+                        />
                       </div>
                       <div className="mb-3 form-group">
                         <label style={{ color: '#696f79' }} className="formLabel">
                           New Password
                         </label>
-                        <input onChange={(e) => setDataUser({ ...dataUser, confirmPassword: e.target.value })} type="password" placeholder="New Password" className={`${style.input} form-control mt-2`} id="" aria-describedby="" />
+                        <input
+                          onChange={(e) =>
+                            setDataUser({
+                              ...dataUser,
+                              confirmPassword: e.target.value,
+                            })
+                          }
+                          type="password"
+                          placeholder="New Password"
+                          className={`${style.input} form-control mt-2`}
+                          id=""
+                          aria-describedby=""
+                        />
                       </div>
                       {/* <InputAuth TypeInput="text" Label="Name" PlaceHolder="Name" />
                       <InputAuth TypeInput="email" Label="Email Address*" PlaceHolder="Enter email address" />
