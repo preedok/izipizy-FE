@@ -279,6 +279,28 @@
     height: 520px;
     overflow-x: auto;
   }
+
+  .buttonPrevious {
+    border: none;
+    width: 100px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: var(--yellow);
+    margin: 0 10px;
+  }
+
+  .buttonNext {
+    border: none;
+    width: 100px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: var(--yellow);
+    margin: 0 20px;
+  }
+
+  .page {
+    padding: 8px 10px;
+  }
 }
 
 @media screen and (max-width: 768px) {

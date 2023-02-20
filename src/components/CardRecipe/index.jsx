@@ -1,15 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './card.module.css';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import { LineWave } from 'react-loader-spinner';
 
 const CardRecipe = ({ data }) => {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  const [loadingSorting, setLoadingSorting] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingSorting(false);
+    }, 2000);
+  }, []);
+
+  if (loadingSorting) {
+    return (
+      <div
+        style={{
+          paddingLeft: '50px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: '#efc81a',
+        }}
+      >
+        <LineWave height="145" width="140" color="white" ariaLabel="line-wave" wrapperStyle={{}} wrapperClass="" visible={true} firstLineColor="" middleLineColor="" lastLineColor="" />
+      </div>
+    );
+  }
 
   return (
     <>
