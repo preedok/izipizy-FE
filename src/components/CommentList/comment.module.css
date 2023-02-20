@@ -1,0 +1,53 @@
+@font-face {
+  font-family: airbnb;
+  src: url('../../assets/font/AirbnbCereal.otf');
+}
+
+:root {
+  --global-font-family: airbnb;
+  --font-primary: #2e266f;
+  --font-heading: #3f3a3a;
+  --background-body: #e5e5e5;
+  --grey: #efefef;
+  --yellow: #efc81a;
+  --yellowHover: #d2ac02;
+  --background-navbar: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--global-font-family);
+}
+
+.body {
+  font-family: var(--global-font-family);
+  background-color: white;
+}
+
+.listsComments {
+  padding-left: 0;
+}
+
+.listComments {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.wrapperComments {
+  display: flex;
+  align-items: center;
+}
+
+.titleName {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.imgComment {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}

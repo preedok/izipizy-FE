@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "Airbnb Cereal App";
+  src: url(../../assets/font/AirbnbCereal.otf);
+}
+
+.customBody {
+  font-family: "Airbnb Cereal App" !important;
+  background: linear-gradient(
+    90deg,
+    #efc81a 5%,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 1) 95%
+  );
+}
+
+.h3 {
+  color: black !important;
+}
+.h4 {
+  color: #2e266f;
+  line-height: 48px;
+  font-size: 60px !important;
+  margin-bottom: 30px !important;
+}
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.cusGridLg8 {
+  grid-column: span 8 / span 8;
+}
+
+.cusGridLg4 {
+  grid-column: span 4 / span 4;
+}
+
+.gapMedium {
+  gap: 8px;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.aspectLock {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.embedVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .cusGridLg8 {
+    grid-column: span 12 / span 12;
+  }
+
+  .cusGridLg4 {
+    grid-column: span 12 / span 12;
+  }
+}

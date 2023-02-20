@@ -1,0 +1,360 @@
+@font-face {
+  font-family: airbnb;
+  src: url('../../assets/font/AirbnbCereal.otf');
+}
+
+:root {
+  --global-font-family: airbnb;
+  --font-primary: #2e266f;
+  --font-heading: #3f3a3a;
+  --background-body: #e5e5e5;
+  --grey: #efefef;
+  --yellow: #efc81a;
+  --yellowHover: #d2ac02;
+  --background-navbar: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--global-font-family);
+}
+
+.body {
+  font-family: var(--global-font-family);
+  background-color: white;
+}
+
+.textLanding {
+  font-family: var(--global-font-family);
+  font-size: 55px;
+  color: var(--font-primary);
+  font-weight: 500;
+  line-height: 80px;
+}
+
+.inputGrupSearch {
+  height: 65px;
+  border-radius: 15px;
+  background-color: #efefef;
+}
+
+.iconSearch {
+  border: none;
+  background-color: var(--grey);
+}
+
+.heroAccsent {
+  position: absolute;
+  right: 0;
+  width: 330px;
+  height: 780px;
+}
+
+.hero {
+  margin-top: -72px;
+}
+
+.row {
+  padding-top: 30px;
+}
+
+.heroImg {
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+
+  border-radius: 15px;
+}
+
+.wrapperImg {
+  position: relative;
+  height: 635px;
+  width: 635px;
+  padding: 0;
+}
+
+.popularImg {
+  height: 600px;
+  width: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.accPopularImg {
+  position: absolute;
+  height: 600px;
+  width: 600px;
+  right: 0;
+  bottom: 0;
+  border: 3px solid var(--yellow);
+  border-radius: 10px;
+}
+
+.accNewRecipeImg {
+  position: absolute;
+  width: 350px;
+  height: 600px;
+  left: 0;
+  top: 0;
+  background-color: var(--yellow);
+}
+
+.wrapperImgRecipe {
+  position: relative;
+  width: 100%;
+  height: 400px;
+
+  border-radius: 15px;
+}
+
+.imgRecipe {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.wrapperTitle {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  text-shadow: 0 0 2px black;
+}
+
+.productType {
+  display: inline-block;
+  width: 123px;
+
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.span {
+  color: #3f3a3a;
+}
+
+.buttonPrevious {
+  border: none;
+  width: 100px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background-color: var(--yellow);
+  margin: 0 20px;
+}
+
+.buttonNext {
+  border: none;
+  width: 100px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background-color: var(--yellow);
+  margin: 0 20px;
+}
+
+.page {
+  padding: 8px 10px;
+}
+
+.btnChat {
+  position: fixed;
+  bottom: 0px;
+  right: 80px;
+
+  width: 350px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  background-color: var(--yellow);
+  color: white;
+
+  text-align: start;
+  font-size: 16px;
+}
+
+.chatAdmin {
+  font-size: 14px;
+
+  background-color: #c9b86c;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 25px;
+}
+
+.chatUser {
+  font-size: 14px;
+
+  background-color: var(--yellow);
+  color: var(--font-heading);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 25px;
+}
+
+.formChat {
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  width: 460px;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid yellow;
+}
+
+.buttonSend {
+  background-color: transparent;
+  border: none;
+  color: var(--yellowHover);
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+@media screen and (max-width: 576px) {
+  .row {
+    text-align: center;
+    padding-top: 50px !important;
+    margin-bottom: 0 !important;
+  }
+  .textLanding {
+    font-size: 30px;
+    color: var(--font-primary);
+    font-weight: 500;
+    line-height: 45px;
+  }
+
+  .heroAccsent {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 650px;
+  }
+
+  .heroImg {
+    margin-top: -100px !important;
+    padding: 0;
+
+    border-radius: 15px;
+  }
+
+  .wrapperImg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .popularImg {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .accPopularImg {
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--yellow);
+    border-radius: 10px;
+  }
+
+  .accNewRecipeImg {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    background-color: var(--yellow);
+  }
+
+  .rowResponsive {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 520px;
+    overflow-x: auto;
+  }
+
+  .buttonPrevious {
+    border: none;
+    width: 100px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: var(--yellow);
+    margin: 0 10px;
+  }
+
+  .buttonNext {
+    border: none;
+    width: 100px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background-color: var(--yellow);
+    margin: 0 20px;
+  }
+
+  .page {
+    padding: 8px 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroAccsent {
+    position: absolute;
+    right: 0;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .row {
+    text-align: center;
+    padding-top: 80px;
+    margin-bottom: 50px;
+  }
+
+  .heroImg {
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
+  }
+
+  .wrapperImg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    padding: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .popularImg {
+    width: 90%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .accPopularImg {
+    position: absolute;
+
+    width: 90%;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--yellow);
+    border-radius: 10px;
+  }
+
+  .wrapperTitle {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-shadow: 0 0 2px white;
+  }
+}
