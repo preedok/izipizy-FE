@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import HeaderAuth from "../../components/HeadingText/HeaderAuth";
 import style from "./auth.module.css";
 import ButtonAuth from "../../components/ButtonAuth/ButtonAuth";
@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { LineWave } from "react-loader-spinner";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const Login = () => {
             JSON.stringify(response.data.data.email)
           );
           localStorage.setItem("name", JSON.stringify(response.data.data.name));
+          localStorage.setItem("id", JSON.stringify(response.data.data.id));
         }
         Swal.fire({
           title: "Login Success",
@@ -48,6 +50,41 @@ const Login = () => {
         });
       });
   };
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
 
   return (
     <section>

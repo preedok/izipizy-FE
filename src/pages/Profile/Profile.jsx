@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import iconEdit from "../../assets/images/profile/Vector.png";
 import style from "../../pages/Profile/style.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Navs from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { updateRecipe } from "../../redux/action/recipeAction";
+import { deleteRecipe } from "../../redux/action/recipeAction";
+import { LineWave } from "react-loader-spinner";
 
 // aos
 import AOS from "aos";
@@ -75,8 +79,14 @@ const Profile = () => {
       });
   };
 
+  const navigate = useNavigate();
+  const data = JSON.parse(localStorage.getItem("users"));
+  const id = data.id;
   // get user
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState({
+    id: "",
+    name: "",
+  });
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND}/api/v1/user/profile`, {
@@ -93,11 +103,47 @@ const Profile = () => {
       });
   }, []);
 
-  const navigate = useNavigate();
-  const data = JSON.parse(localStorage.getItem("users"));
-  const id = data.id;
-
   // update user
+  const onUpdateusers = (e) => {
+    e.preventDefault();
+    const formDatas = new FormData();
+    formDatas.append("id", profile.id);
+    formDatas.append("name", profile.name);
+    formDatas.append("image", images);
+    axios
+      .put(
+        `${process.env.REACT_APP_BACKEND}/api/v1/user/edit/${profile.id}`,
+        formDatas,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        Swal.fire({
+          title: "Update Users Success",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const [images, setImages] = useState(null);
+  const handleImageChanges = (event) => {
+    setImages(event.target.files[0]);
+  };
+
+  const handleInputChanges = (event) => {
+    setProfile({
+      ...profile,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   // get detail recipe
   const [detailProduct, setDetailProduct] = useState({
@@ -120,38 +166,11 @@ const Profile = () => {
       });
   };
 
+  const dispatch = useDispatch();
   // update recipe
   const onUpdateProduct = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const formData = new FormData();
-    formData.append("id", detailProduct.id);
-    formData.append("name_recipe", detailProduct.name_recipe);
-    formData.append("ingredients", detailProduct.ingredients);
-    formData.append("video", detailProduct.video);
-    formData.append("description", detailProduct.description);
-    formData.append("image", image, image.name);
-    axios
-      .put(
-        `${process.env.REACT_APP_BACKEND}/api/v1/recipe/${detailProduct.id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data.data);
-        Swal.fire({
-          title: "Update Product Success",
-          icon: "success",
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(updateRecipe(detailProduct, image));
   };
 
   const [image, setImage] = useState(null);
@@ -167,30 +186,48 @@ const Profile = () => {
 
   // delete recipe
   const deleteProduct = (id) => {
-    const token = localStorage.getItem("token");
-    axios
-      .delete(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data.data);
-        Swal.fire({
-          title: "Delete Success",
-          text: `Your Recipe Delete Success`,
-          icon: "success",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(deleteRecipe(id));
   };
 
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -255,9 +292,9 @@ const Profile = () => {
                         ></button>
                       </div>
                       <form
-                      // onSubmit={(e) => {
-                      //   handleUpdate(e);
-                      // }}
+                        onSubmit={(e) => {
+                          onUpdateusers(e);
+                        }}
                       >
                         <div className="modal-body">
                           <input
@@ -266,18 +303,17 @@ const Profile = () => {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             placeholder="Name"
-                            // name="name"
-                            // value={profile.name}
-                            // onChange={(e) => handleInputChanges(e)}
+                            name="name"
+                            value={profile.name}
+                            onChange={(e) => handleInputChanges(e)}
                           />
                           <input
                             type="file"
                             className="form-control mt-3"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
-                            placeholder="Change Photo"
-                            // name="image_profile"
-                            // onChange={handleImageChanges}
+                            name="image"
+                            onChange={handleImageChanges}
                           />
                         </div>
                         <div className="modal-footer">
@@ -399,7 +435,7 @@ const Profile = () => {
               <div className="">
                 <div className="row">
                   {ownProduct.map((data) => (
-                    <div className="col-4 mb-4">
+                    <div className="col-4 mb-5 me-4">
                       <div className={style.wrapper}>
                         <img
                           className="me-3 rounded-4"
@@ -411,21 +447,23 @@ const Profile = () => {
                           {data.name_recipe}
                         </span>
 
-                        <div className={style.titlebtn}>
-                          <button
-                            onClick={(e) => deleteProduct(data.id, e)}
-                            className={` btn btn-danger me-2`}
-                          >
-                            delete
-                          </button>
-                          <button
-                            data-bs-toggle="modal"
-                            data-bs-target="#edit"
-                            className={` btn btn-success me-4`}
-                            onClick={(e) => getDetailProduct(data.id, e)}
-                          >
-                            Update
-                          </button>
+                        <div className={style.dd}>
+                          <div className={style.titlebtn}>
+                            <button
+                              onClick={(e) => deleteProduct(data.id, e)}
+                              className={` btn btn-danger me-2`}
+                            >
+                              delete
+                            </button>
+                            <button
+                              data-bs-toggle="modal"
+                              data-bs-target="#edit"
+                              className={` btn btn-success me-4`}
+                              onClick={(e) => getDetailProduct(data.id, e)}
+                            >
+                              Update
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -525,30 +563,38 @@ const Profile = () => {
                 </div>
               </div>
             ) : view === "saveRecipe" ? (
-              <div className="d-flex">
+              <div className="row">
                 {savedProduct.map((data) => (
-                  <div>
-                    <img
-                      className="rounded-4"
-                      style={{ width: "340px", height: "170px" }}
-                      src={data.image}
-                      alt=""
-                    />
-                    <span className={style.titleImage}>{data.name_recipe}</span>
+                  <div className="col-4 mb-4  me-4">
+                    <div className={style.wrapper}>
+                      <img
+                        className="rounded-4"
+                        style={{ width: "100%", height: "100%" }}
+                        src={data.image}
+                        alt=""
+                      />
+                      <span className={style.titleImage}>
+                        {data.name_recipe}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
             ) : view === "likedRecipe" ? (
-              <div className="d-flex">
+              <div className="row">
                 {likedProduct.map((data) => (
-                  <div>
-                    <img
-                      className="rounded-4"
-                      style={{ width: "340px", height: "170px" }}
-                      src={data.image}
-                      alt=""
-                    />
-                    <span className={style.titleImage}>{data.name_recipe}</span>
+                  <div className="col-4 mb-4  me-4">
+                    <div className={style.wrapper}>
+                      <img
+                        className="rounded-4"
+                        style={{ width: "100%", height: "100%" }}
+                        src={data.image}
+                        alt=""
+                      />
+                      <span className={style.titleImage}>
+                        {data.name_recipe}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>

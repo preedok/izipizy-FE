@@ -4,6 +4,7 @@ import style from "./search.module.css";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../components/Navbar/navbar";
+import { LineWave } from "react-loader-spinner";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -27,6 +28,41 @@ const Search = () => {
         setSearchRecipes(response.data.data);
       });
   }, []);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
 
   return (
     <>

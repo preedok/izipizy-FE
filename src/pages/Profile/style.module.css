@@ -51,6 +51,27 @@ body {
   border-radius: 15px;
   object-fit: cover;
 }
+@media screen and (max-width: 600px) {
+  .wrapper {
+    position: relative;
+    width: 130%;
+    height: 100px;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+  .titleImage {
+    font-size: 18px !important;
+  }
+  .dd {
+    margin-left: 150px !important;
+  }
+  .titlebtn button {
+    width: 100px;
+    height: 30px;
+    font-size: 10px !important;
+    position: relative;
+  }
+}
 
 .wrapper img {
   object-fit: cover;
@@ -101,7 +122,7 @@ body {
 
 @media screen and (max-width: 720px) {
   .profile {
-    margin-left: 125px;
+    margin-left: 135px;
   }
 }
 
@@ -114,7 +135,6 @@ body {
     flex-direction: column;
     display: flex;
     text-align: center;
-    margin-left: 170px;
   }
 }
 

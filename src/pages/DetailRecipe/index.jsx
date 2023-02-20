@@ -12,6 +12,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { LineWave } from "react-loader-spinner";
 
 const DetailRecipe = () => {
   // effect
@@ -63,9 +64,9 @@ const DetailRecipe = () => {
         .then((response) => {
           console.log(response.data.data);
           Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Success',
+            position: "top-end",
+            icon: "success",
+            title: "Success",
             text: `${response.data.message}`,
             showConfirmButton: false,
             timer: 1500,
@@ -75,8 +76,8 @@ const DetailRecipe = () => {
           // handle error
           console.log(error);
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+            icon: "error",
+            title: "Oops...",
             text: `${error.response.data.message}`,
           });
         });
@@ -144,6 +145,41 @@ const DetailRecipe = () => {
         console.log(error.response.data.message);
       });
   }, []);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
 
   return (
     <body className={style.body}>

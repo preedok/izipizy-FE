@@ -1,18 +1,18 @@
 const initialState = {
   data: {
-    name: '',
-    email: '',
+    name: "",
+    email: "",
   },
   isLoading: false,
 };
 
 export const usersReducer = (state = initialState, action) => {
-  if (action.type === 'userLoginPending') {
+  if (action.type === "userLoginPending") {
     return {
       ...state,
       isLoading: true,
     };
-  } else if (action.type === 'userLoginSuccess') {
+  } else if (action.type === "userLoginSuccess") {
     return {
       ...state,
       data: action.payload,

@@ -8,7 +8,8 @@ import Navbar from "../../components/Navbar/navbar";
 import HeadingText from "../../components/HeadingText";
 import ProductText from "../../components/ProductText";
 import Footer from "../../components/Footer/Footer.jsx";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { LineWave } from "react-loader-spinner";
 
 // aos
 import AOS from "aos";
@@ -67,6 +68,41 @@ const Home = () => {
       });
   }, []);
   console.log(popular[0].name_recipe);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          paddingLeft: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#efc81a",
+        }}
+      >
+        <LineWave
+          height="145"
+          width="140"
+          color="white"
+          ariaLabel="line-wave"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          firstLineColor=""
+          middleLineColor=""
+          lastLineColor=""
+        />
+      </div>
+    );
+  }
 
   return (
     <>
