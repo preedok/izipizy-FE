@@ -16,7 +16,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useDispatch } from 'react-redux';
 import { getRecipe, getRecipePopular } from '../../redux/action/recipeAction';
-import { LineWave } from 'react-loader-spinner';
 
 const Home = () => {
   useEffect(() => {
