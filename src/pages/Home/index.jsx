@@ -48,7 +48,19 @@ const Home = () => {
     setSearchRecipe(query);
   };
 
-  console.log(searchRecipe);
+  const [popular, setPopular] = useState([{}]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe?sortby=likes&sort=asc`)
+      .then((response) => {
+        setPopular(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  console.log(popular[0].name_recipe);
 
   return (
     <>
@@ -73,7 +85,7 @@ const Home = () => {
                 </form>
               </div>
               <div className="col-lg-6  d-flex justify-content-lg-end offset-lg-1 col-md-12 col-sm-12 justify-content-sm-center" data-aos="zoom-in-left" data-aos-duration="1000">
-                <img src={heroImg} className={style.heroImg} alt="hero-img" />
+                <img src={popular[0].image} className={style.heroImg} alt="hero-img" />
               </div>
             </div>
           </div>
@@ -87,12 +99,12 @@ const Home = () => {
               <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
                 <div className={style.wrapperImg}>
                   <div className={style.accPopularImg} alt="popular-img" />
-                  <img src={recipe[0].image} crossOrigin="anonymous" className={`position-relative ${style.popularImg}`} alt="popular-img" />
+                  <img src={popular[0].image} crossOrigin="anonymous" className={`position-relative ${style.popularImg}`} alt="popular-img" />
                 </div>
               </div>
 
               <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
-                <ProductText cta={handleDetail} headingTitleRecipe={recipe[0].name_recipe} descriptionTitleRecipe="Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!" />
+                <ProductText cta={handleDetail} headingTitleRecipe={popular[0].name_recipe} descriptionTitleRecipe={popular[0].description} />
               </div>
             </div>
           </div>
@@ -127,7 +139,7 @@ const Home = () => {
 
           <div className="container">
             <div className={`row ${style.rowResponsive}`}>
-              {recipe.map((item) => {
+              {popular.map((item) => {
                 return (
                   <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-down" data-aos-duration="1000">
                     <Link className={style.span} to={`/detailRecipe/${item.id}`}>
