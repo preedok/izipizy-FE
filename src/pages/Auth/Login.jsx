@@ -20,9 +20,12 @@ const Login = () => {
     axios
       .post(`${process.env.REACT_APP_BACKEND}/api/v1/user/login`, form)
       .then((response) => {
-        console.log(response);
         if (response.data.status !== 'success') {
-          alert(response.data.message);
+          Swal.fire({
+            title: 'Login Failed',
+            text: `${response.data.message}`,
+            icon: 'warning',
+          });
         } else {
           const token = response.data.data.token;
           localStorage.setItem('token', token);
@@ -32,15 +35,15 @@ const Login = () => {
         }
         Swal.fire({
           title: 'Login Success',
-          text: `Login Success!`,
+          text: `${response.data.message}`,
           icon: 'success',
         });
         return navigate('/profile');
       })
-      .catch(() => {
+      .catch((error) => {
         Swal.fire({
           title: 'Login Failed',
-          text: `Make sure your data is correct!`,
+          text: `${error.response.data.message}`,
           icon: 'warning',
         });
       });

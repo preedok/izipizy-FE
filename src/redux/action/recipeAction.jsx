@@ -4,23 +4,55 @@ import Swal from 'sweetalert2';
 // get All Recipe
 export const getRecipe = (setRecipe) => async (dispatch) => {
   try {
-    // axios.get('https://izipizy-team.cyclic.app/api/v1/recipe').then((response) => {
-    //   console.log(response.data);
-    //   setRecipe(response.data.data);
-    // });
+    axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe`).then((response) => {
+      setRecipe(response.data.data);
+    });
     dispatch({ type: 'getAllRecipe', payload: 'success' });
   } catch (error) {
-    console.log(error);
+    Swal.fire({
+      text: `${error.response.data.message}`,
+      icon: 'warning',
+    });
+  }
+};
+
+// get Recipe Popular
+export const getRecipePopular = (setPopular, counter) => async (dispatch) => {
+  try {
+    axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe?sortby=likes&sort=asc&page=${counter}&limit=100`).then((response) => {
+      setPopular(response.data.data);
+    });
+    dispatch({ type: 'getAllRecipePopular', payload: 'success' });
+  } catch (error) {
+    Swal.fire({
+      text: `${error.response.data.message}`,
+      icon: 'warning',
+    });
   }
 };
 
 // Create Recipe
 export const createRecipe = () => async (dispatch) => {
   try {
-    dispatch({ type: 'createRecipe', payload: 'Recipe Created success' });
+    dispatch({ type: 'createRecipe', payload: 'success' });
   } catch (error) {
     Swal.fire({
-      text: error.response.data.message,
+      text: `${error.response.data.message}`,
+      icon: 'warning',
+    });
+  }
+};
+
+// get Comment Recipe
+export const getComment = (setDataComments, id) => async (dispatch) => {
+  try {
+    axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/comment/recipe/${id}`).then((response) => {
+      setDataComments(response.data.data);
+    });
+    dispatch({ type: 'getComment', payload: 'success' });
+  } catch (error) {
+    Swal.fire({
+      text: `${error.response.data.message}`,
       icon: 'warning',
     });
   }
@@ -29,7 +61,7 @@ export const createRecipe = () => async (dispatch) => {
 // Update Recipe
 export const updateRecipe = () => async (dispatch) => {
   try {
-    dispatch({ type: 'updateRecipe', payload: 'Recipe Updated success' });
+    dispatch({ type: 'updateRecipe', payload: 'success' });
   } catch (error) {
     Swal.fire({
       text: error.response.data.message,
@@ -41,7 +73,7 @@ export const updateRecipe = () => async (dispatch) => {
 // Delete Recipe
 export const deleteRecipe = () => async (dispatch) => {
   try {
-    dispatch({ type: 'deleteRecipe', payload: 'Recipe Deleted success' });
+    dispatch({ type: 'deleteRecipe', payload: 'success' });
   } catch (error) {
     Swal.fire({
       text: error.response.data.message,
@@ -50,17 +82,13 @@ export const deleteRecipe = () => async (dispatch) => {
   }
 };
 
-export const getDetailRecipe = (setRecipe) => async (dispatch) => {
+// get detail recipe
+export const getDetailRecipe = (setRecipe, id) => async (dispatch) => {
   try {
-    // axios
-    //     .get(`${process.env.REACT_APP_BACKEND}/recipe/${id}`)
-    //     .then(function (response) {
-    //       setRecipe(response.data.data);
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-    dispatch({ type: 'getDetailRecipe', payload: 'Get detail recipe success' });
+    axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe/${id}`).then((response) => {
+      setRecipe(response.data.data);
+    });
+    dispatch({ type: 'getDetailRecipe', payload: 'success' });
   } catch (error) {
     Swal.fire({
       text: error.response.data.message,

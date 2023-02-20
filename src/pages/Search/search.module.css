@@ -55,3 +55,11 @@
 .span {
   color: #3f3a3a;
 }
+
+.searchText {
+  border-left: 4px solid var(--yellow);
+}
+
+.garis {
+  border: 2px solid var(--grey);
+}

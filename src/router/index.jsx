@@ -13,6 +13,7 @@ import ResetPassword from '../pages/Auth/ResetPassword';
 import DetailRecipe from '../pages/DetailRecipe';
 import Swal from 'sweetalert2';
 import Search from '../pages/Search';
+import Popular from '../pages/Popular';
 
 // Scroll to Top when switching page
 const ScrollToTop = ({ children }) => {
@@ -93,6 +94,7 @@ const Router = () => {
             <Route path="/search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/detailRecipe/:id" element={<DetailRecipe />} />
+            <Route path="/popular" element={<Popular />} />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

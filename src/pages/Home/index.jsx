@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import style from './home.module.css';
 import accsent from '../../assets/images/landing-page/Rectangle 2.png';
-import heroImg from '../../assets/images/product/Product_landing.png';
+
 import Navbar from '../../components/Navbar/navbar';
 import HeadingText from '../../components/HeadingText';
 import ProductText from '../../components/ProductText';
@@ -13,6 +13,8 @@ import { Link, useNavigate } from 'react-router-dom';
 // aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useDispatch } from 'react-redux';
+import { getRecipe, getRecipePopular } from '../../redux/action/recipeAction';
 
 const Home = () => {
   useEffect(() => {
@@ -20,21 +22,16 @@ const Home = () => {
     AOS.refresh();
   }, []);
 
+  const navigate = useNavigate();
+
   // New Recipe
   const [recipe, setRecipe] = useState([{}]);
+  const dispatch = useDispatch();
 
+  // Get all recipe
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe`)
-      .then((response) => {
-        setRecipe(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const navigate = useNavigate();
+    dispatch(getRecipe(setRecipe));
+  }, [dispatch]);
 
   const handleDetail = () => {
     navigate(`/detailRecipe/${recipe[0].id}`);
@@ -53,18 +50,20 @@ const Home = () => {
   };
 
   const [popular, setPopular] = useState([{}]);
+  const [counter, setCounter] = useState(1);
 
+  // popular by limit, sortBy, sort
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe?sortby=likes&sort=asc`)
-      .then((response) => {
-        setPopular(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(getRecipePopular(setPopular, counter));
   }, []);
-  console.log(popular[0].name_recipe);
+
+  const previous = () => {
+    setCounter(counter - 1);
+  };
+
+  const next = () => {
+    setCounter(counter + 1);
+  };
 
   return (
     <>
@@ -97,7 +96,7 @@ const Home = () => {
 
         <div className="container-fluid mb-5">
           <div className="container ">
-            <HeadingText children="Popular For You !" />
+            <HeadingText children="Popular For You !" link="/popular" />
 
             <div className="row d-flex align-items-center overflow-hidden">
               <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
@@ -157,6 +156,20 @@ const Home = () => {
                   </div>
                 );
               })}
+            </div>
+
+            <div className="row text-center">
+              <div className="col-12">
+                <div className={style.pagination}>
+                  <button className={style.buttonPrevious} onClick={previous}>
+                    Previous
+                  </button>
+                  <span className={style.page}>1 / 5</span>
+                  <button className={style.buttonNext} onClick={next}>
+                    Next
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
