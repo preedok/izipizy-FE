@@ -49,10 +49,10 @@ const Video = () => {
                 </div>
                 <div>
                   <h3 className={`${style.titleVideo} ${style.h3} my-2`}>
-                    {data.recipe_name}
+                    {data.name_recipe}
                   </h3>
                   <p className={`${style.customDate} text-muted`}>
-                    3 month ago
+                    {data.created_at}
                   </p>
                 </div>
               </div>
@@ -75,8 +75,8 @@ const Video = () => {
                   ></iframe>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
-                  <h5 className="my-2">{data.recipe_name}</h5>
-                  <p className="text-muted">3 month ago</p>
+                  <h5 className="my-2">{data.name_recipe}</h5>
+                  <p className="text-muted">{data.created_at}</p>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
                   <div className={style.aspectLock}>
@@ -89,8 +89,8 @@ const Video = () => {
                       allowfullscreen
                     ></iframe>
                   </div>
-                  <h5 className="my-2">{data.recipe_name}</h5>
-                  <p className="text-muted">3 month ago</p>
+                  <h5 className="my-2">{data.name_recipe}</h5>
+                  <p className="text-muted">{data.created_at}</p>
                 </div>
                 <div
                   className={style.aspectLock}
@@ -107,8 +107,8 @@ const Video = () => {
                   ></iframe>
                 </div>
                 <div data-aos="zoom-in-up" data-aos-duration="1000">
-                  <h5 className="my-2">{data.recipe_name}</h5>
-                  <p className="text-muted">3 month ago</p>
+                  <h5 className="my-2">{data.name_recipe}</h5>
+                  <p className="text-muted">{data.created_at}</p>
                 </div>
               </div>
             </div>

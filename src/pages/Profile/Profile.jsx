@@ -433,39 +433,41 @@ const Profile = () => {
           </div>
           <div className="container">
             {view === "MyRecipe" ? (
-              <div className="d-flex ">
-                {ownProduct.map((data) => (
-                  <div className="row ">
-                    <div className="col-12 ">
-                      <img
-                        className="me-3 rounded-4"
-                        style={{ width: "340px", height: "170px" }}
-                        src={data.image}
-                        alt=""
-                      />
-                      <span className={` ${style.titleImage}`}>
-                        {data.name_recipe}
-                      </span>
+              <div className="">
+                <div className="row">
+                  {ownProduct.map((data) => (
+                    <div className="col-4 mb-4">
+                      <div className={style.wrapper}>
+                        <img
+                          className="me-3 rounded-4"
+                          style={{ width: "100%", height: "100%" }}
+                          src={data.image}
+                          alt=""
+                        />
+                        <span className={` ${style.titleImage}`}>
+                          {data.name_recipe}
+                        </span>
 
-                      <div className={style.titlebtn}>
-                        <button
-                          onClick={(e) => deleteProduct(data.id, e)}
-                          className={` btn btn-danger me-2`}
-                        >
-                          delete
-                        </button>
-                        <button
-                          data-bs-toggle="modal"
-                          data-bs-target="#edit"
-                          className={` btn btn-success me-4`}
-                          onClick={(e) => getDetailProduct(data.id, e)}
-                        >
-                          Update
-                        </button>
+                        <div className={style.titlebtn}>
+                          <button
+                            onClick={(e) => deleteProduct(data.id, e)}
+                            className={` btn btn-danger me-2`}
+                          >
+                            delete
+                          </button>
+                          <button
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit"
+                            className={` btn btn-success me-4`}
+                            onClick={(e) => getDetailProduct(data.id, e)}
+                          >
+                            Update
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
                 <div
                   className="modal fade"
                   id="edit"
