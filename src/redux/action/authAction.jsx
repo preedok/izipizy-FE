@@ -29,7 +29,7 @@ export const userLoginSuccess = () => async (dispatch) => {
 export const UserRegister = (body) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`https://izipizy-team.cyclic.app/api/v1/user/register`, body)
+      .post(`${process.env.REACT_APP_BACKEND}/api/v1/user/register`, body)
       .then((response) => {
         resolve(response);
       })

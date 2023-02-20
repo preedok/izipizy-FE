@@ -40,6 +40,10 @@ const Home = () => {
     navigate(`/detailRecipe/${recipe[0].id}`);
   };
 
+  const handleDetailPopular = () => {
+    navigate(`/detailRecipe/${popular[0].id}`);
+  };
+
   const [searchRecipe, setSearchRecipe] = useState("");
   const handleSearch = () => {
     window.location.replace(`/search?search=${searchRecipe}`);
@@ -142,7 +146,7 @@ const Home = () => {
                 data-aos-duration="1000"
               >
                 <ProductText
-                  cta={handleDetail}
+                  cta={handleDetailPopular}
                   headingTitleRecipe={popular[0].name_recipe}
                   descriptionTitleRecipe={popular[0].description}
                 />

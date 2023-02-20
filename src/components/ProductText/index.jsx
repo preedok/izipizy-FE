@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './product.module.css';
 
-const ProductText = ({ cta, headingTitleRecipe, descriptionTitleRecipe, props }) => {
+const ProductText = ({ cta, headingTitleRecipe, descriptionTitleRecipe }) => {
   return (
     <>
       <h2 className={style.titleRecipe}>{headingTitleRecipe}</h2>

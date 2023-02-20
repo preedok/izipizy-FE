@@ -45,7 +45,6 @@ const DetailRecipe = () => {
   let count = `${recipe.liked_count}`; //ambil dari data recipe.like
   const [likes, setLikes] = useState({
     recipe_id: `${id}`,
-    liked_count: `${count}`,
   });
 
   console.log(likes);
@@ -55,10 +54,32 @@ const DetailRecipe = () => {
   const handleLike = () => {
     if (!likeActive) {
       setLikeActive(true);
-      setLikes({
-        ...likes,
-        likes_id: count++,
-      });
+      axios
+        .post(`${process.env.REACT_APP_BACKEND}/api/v1/liked`, likes, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Success',
+            text: `${response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.response.data.message}`,
+          });
+        });
     }
   };
 
