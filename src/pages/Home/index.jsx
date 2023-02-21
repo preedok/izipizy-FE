@@ -91,8 +91,6 @@ const Home = () => {
   const next = () => {
     setCounter(counter === totalPage ? totalPage : counter + 1);
     console.log(counter);
-    // setCounter(counter + 1);
-    // getRecipePop(counter);
   };
 
   const [loading, setLoading] = useState(true);

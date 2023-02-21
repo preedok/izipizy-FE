@@ -8,7 +8,7 @@ const CommentList = ({ dataComment }) => {
   const idUser = localStorage.getItem('id');
   const idSplit = idUser.split('"')[1];
 
-  const handleEdit = () => {};
+  const handleEdit = (id) => {};
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Are you sure Delete?',
