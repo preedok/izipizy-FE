@@ -2,13 +2,56 @@ import React from 'react';
 import style from './comment.module.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 const CommentList = ({ dataComment }) => {
+  // const [comments, setComments] = useState({
+  //   comment_text,
+  //   recipe_id: `${id}`,
+  // });
+
+  //   const handleChange = (e) => {
+  //     setComments({
+  //       ...comments,
+  //       [e.target.name]: e.target.value,
+  //     });
+  //   };
+
   const token = localStorage.getItem('token');
   const idUser = localStorage.getItem('id');
   const idSplit = idUser.split('"')[1];
 
-  const handleEdit = () => {};
+  // const [detailComment, setDetailComment] = useState({
+  //   comment_text: '',
+  //   recipe_id: '',
+  // });
+
+  const handleEdit = () => {
+    // e.preventDefault();
+    // axios
+    //   .put(`${process.env.REACT_APP_BACKEND}/api/v1/comment/${id}`, comments, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     Swal.fire({
+    //       icon: 'success',
+    //       title: 'Success',
+    //       text: `${res.data.message}`,
+    //       showConfirmButton: false,
+    //       timer: 1500,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Oops...',
+    //       text: `${err.response.data.message}`,
+    //     });
+    //   });
+  };
+
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Are you sure Delete?',
