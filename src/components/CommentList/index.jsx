@@ -2,8 +2,21 @@ import React from 'react';
 import style from './comment.module.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 const CommentList = ({ dataComment }) => {
+  // const [comments, setComments] = useState({
+  //   comment_text,
+  //   recipe_id: `${id}`,
+  // });
+
+  //   const handleChange = (e) => {
+  //     setComments({
+  //       ...comments,
+  //       [e.target.name]: e.target.value,
+  //     });
+  //   };
+
   const token = localStorage.getItem('token');
   const idUser = localStorage.getItem('id');
   const idSplit = idUser.split('"')[1];
