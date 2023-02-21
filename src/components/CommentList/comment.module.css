@@ -51,3 +51,53 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+.listComments {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonEdit {
+  width: 40px;
+  height: 30px;
+
+  border: 1px solid var(--yellow);
+  border-radius: 5px;
+  background-color: white;
+  color: var(--yellow);
+  margin: 0 2px;
+}
+
+.buttonEdit:hover {
+  width: 40px;
+  height: 30px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: var(--yellow);
+  color: white;
+  margin: 0 2px;
+}
+
+.buttonDelete {
+  width: 40px;
+  height: 30px;
+
+  border: 1px solid rgb(201, 49, 49);
+  border-radius: 5px;
+  background-color: white;
+  color: rgb(201, 49, 49);
+  margin: 0 2px;
+}
+
+.buttonDelete:hover {
+  width: 40px;
+  height: 30px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(201, 49, 49);
+  color: white;
+  margin: 0 2px;
+}
