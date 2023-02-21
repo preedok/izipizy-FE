@@ -91,8 +91,6 @@ const Home = () => {
   const next = () => {
     setCounter(counter === totalPage ? totalPage : counter + 1);
     console.log(counter);
-    // setCounter(counter + 1);
-    // getRecipePop(counter);
   };
 
   const [loading, setLoading] = useState(true);
@@ -202,7 +200,7 @@ const Home = () => {
               ) : (
                 dataPopular.map((item) => {
                   return (
-                    <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
+                    <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-left" data-aos-duration="1000">
                       <Link className={style.span} to={`/detailRecipe/${item.id}`}>
                         <div className={style.wrapperImgRecipe}>
                           <img src={item.image} crossOrigin="anonymous" className={style.imgRecipe} alt="img-recipe" />
