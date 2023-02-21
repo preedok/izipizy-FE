@@ -21,37 +21,7 @@ const CommentList = ({ dataComment }) => {
   const idUser = localStorage.getItem('id');
   const idSplit = idUser.split('"')[1];
 
-  // const [detailComment, setDetailComment] = useState({
-  //   comment_text: '',
-  //   recipe_id: '',
-  // });
-
-  const handleEdit = () => {
-    // e.preventDefault();
-    // axios
-    //   .put(`${process.env.REACT_APP_BACKEND}/api/v1/comment/${id}`, comments, {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     Swal.fire({
-    //       icon: 'success',
-    //       title: 'Success',
-    //       text: `${res.data.message}`,
-    //       showConfirmButton: false,
-    //       timer: 1500,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Oops...',
-    //       text: `${err.response.data.message}`,
-    //     });
-    //   });
-  };
-
+  const handleEdit = (id) => {};
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Are you sure Delete?',
