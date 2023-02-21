@@ -15,6 +15,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getComment, getDetailRecipe } from '../../redux/action/recipeAction';
 import { LineWave } from 'react-loader-spinner';
+
 const DetailRecipe = () => {
   // effect
   useEffect(() => {
