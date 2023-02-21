@@ -274,10 +274,10 @@
   }
 
   .rowResponsive {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 520px;
-    overflow-x: auto;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    height: 430px !important;
+    overflow-x: auto !important;
   }
 
   .buttonPrevious {
@@ -300,6 +300,22 @@
 
   .page {
     padding: 8px 10px;
+  }
+
+  .btnChat {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--yellow);
+    color: white;
+
+    text-align: start;
+    font-size: 16px;
   }
 }
 
