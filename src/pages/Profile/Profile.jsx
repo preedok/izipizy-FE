@@ -146,6 +146,11 @@ const Profile = () => {
     setImages(event.target.files[0]);
   };
 
+  const [videos, setVideos] = useState(null);
+  const handleVideoChanges = (event) => {
+    setVideos(event.target.files[0]);
+  };
+
   const handleInputChanges = (event) => {
     setProfile({
       ...profile,
@@ -178,7 +183,7 @@ const Profile = () => {
   // update recipe
   const onUpdateProduct = (e) => {
     e.preventDefault();
-    dispatch(updateRecipe(detailProduct, image));
+    dispatch(updateRecipe(detailProduct, image, videos));
   };
 
   const [image, setImage] = useState(null);
@@ -535,13 +540,12 @@ const Profile = () => {
                             onChange={handleInputChange}
                           />
                           <input
-                            type="text"
+                            type="file"
                             className="form-control mt-3"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             name="video"
-                            value={detailProduct.video}
-                            onChange={handleInputChange}
+                            onChange={handleVideoChanges}
                           />
                           <textarea
                             type="text"
