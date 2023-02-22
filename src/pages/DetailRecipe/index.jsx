@@ -167,6 +167,8 @@ const DetailRecipe = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const handleEdit = (id) => {};
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -203,7 +205,7 @@ const DetailRecipe = () => {
           <div className="row mb-5">
             <div className="col-lg-12 text-center" data-aos="zoom-in-right" data-aos-duration="1000">
               <div className={style.wrapperImg}>
-                <img src={recipe.image} crossOrigin="anonymous" className={`position-relative ${style.detailImg}`} alt="popular-img" />
+                <img src={recipe.image} className={`position-relative ${style.detailImg}`} alt="popular-img" />
 
                 <div className={style.wrapperButton}>
                   {!saveActive ? (
