@@ -1,23 +1,23 @@
-import React from 'react';
-import style from './comment.module.css';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import React from "react";
+import style from "./comment.module.css";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const CommentList = ({ dataComment }) => {
-  const token = localStorage.getItem('token');
-  const idUser = localStorage.getItem('id');
+  const token = localStorage.getItem("token");
+  const idUser = localStorage.getItem("id");
   const idSplit = idUser.split('"')[1];
 
   const handleEdit = () => {};
   const handleDelete = (id) => {
     Swal.fire({
-      title: 'Are you sure Delete?',
+      title: "Are you sure Delete?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         axios
@@ -27,7 +27,11 @@ const CommentList = ({ dataComment }) => {
             },
           })
           .then((response) => {
-            Swal.fire(`${response.data.message}`, 'Your comment has been deleted.', 'success');
+            Swal.fire(
+              `${response.data.message}`,
+              "Your comment has been deleted.",
+              "success"
+            );
           })
           .catch((error) => {
             console.log(error);
@@ -42,7 +46,11 @@ const CommentList = ({ dataComment }) => {
         {dataComment.map((item) => (
           <li className={style.listComments}>
             <div className={style.wrapperComments}>
-              <img src={item.image_profile} alt="profile" className={`me-3 ${style.imgComment}`} />
+              <img
+                src={item.image_profile}
+                alt="profile"
+                className={`me-3 ${style.imgComment}`}
+              />
               <div className={style.wrapper}>
                 <p className={style.titleName}>{item.name}</p>
                 <span className={style.comments}>{item.comment_text}</span>
@@ -71,7 +79,7 @@ const CommentList = ({ dataComment }) => {
                 </button>
               </div>
             ) : (
-              ''
+              ""
             )}
           </li>
         ))}

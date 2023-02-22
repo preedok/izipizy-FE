@@ -32,7 +32,14 @@ const Add = () => {
   const dispatch = useDispatch();
   const onSubmitInsertProduct = (e) => {
     e.preventDefault();
-    dispatch(createRecipe(insertProduct, imageProduct));
+    dispatch(createRecipe(insertProduct, imageProduct, videoProduct));
+  };
+
+  const [videoProduct, setVideoProduct] = useState();
+  const handleChangeProducts = (event) => {
+    const fileUploaded = event.target.files[0];
+    document.getElementById("addVideo").innerHTML = fileUploaded.name_recipe;
+    setVideoProduct(fileUploaded);
   };
 
   useEffect(() => {
@@ -99,13 +106,9 @@ const Add = () => {
                 <input
                   className={`form-control ${style.input}`}
                   placeholder="Video"
-                  type="text"
-                  onChange={(e) => {
-                    setInsertProduct({
-                      ...insertProduct,
-                      video: e.target.value,
-                    });
-                  }}
+                  type="file"
+                  id="addVideo"
+                  onChange={handleChangeProducts}
                 />
               </div>
               <div className="mb-3" data-aos="zoom-in" data-aos-duration="1000">
