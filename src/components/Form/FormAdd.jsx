@@ -104,12 +104,23 @@ const Add = () => {
               </div>
               <div className="mb-3" data-aos="zoom-in" data-aos-duration="1000">
                 <input
+                  className={`form-control ${style.input} mt-3`}
+                  type="file"
+                  id="addImage"
+                  src={previewImage ? previewImage : packageIcon}
+                  onChange={handleChangeProduct}
+                />
+                {/* <input
                   className={`form-control ${style.input}`}
                   placeholder="Video"
                   type="file"
-                  id="addVideo"
-                  onChange={handleChangeProducts}
-                />
+                  onChange={(e) => {
+                    setInsertProduct({
+                      ...insertProduct,
+                      video: e.target.value,
+                    });
+                  }}
+                /> */}
               </div>
               <div className="mb-3" data-aos="zoom-in" data-aos-duration="1000">
                 <textarea

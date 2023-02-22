@@ -91,8 +91,6 @@ const Home = () => {
   const next = () => {
     setCounter(counter === totalPage ? totalPage : counter + 1);
     console.log(counter);
-    // setCounter(counter + 1);
-    // getRecipePop(counter);
   };
 
   const [loading, setLoading] = useState(true);
@@ -143,7 +141,7 @@ const Home = () => {
                 </form>
               </div>
               <div className="col-lg-6  d-flex justify-content-lg-end offset-lg-1 col-md-12 col-sm-12 justify-content-sm-center" data-aos="zoom-in-left" data-aos-duration="1000">
-                <img src={popular[0].image} className={style.heroImg} alt="hero-img" />
+                <img src={popular[0].image} crossOrigin="anonymous" className={style.heroImg} alt="hero-img" />
               </div>
             </div>
           </div>
@@ -179,7 +177,7 @@ const Home = () => {
               <div className="row d-flex align-items-center  overflow-hidden">
                 <div className="col-lg-6 col-sm-12 p-0" data-aos="zoom-in-right" data-aos-duration="1000">
                   <div className={style.wrapperImg}>
-                    <img src={recipe[0].image} crossOrigin="anonymous" className={`position-relative ${style.popularImg}`} alt="popular-img" />
+                    <img src={recipe[0].image} className={`position-relative ${style.popularImg}`} alt="popular-img" />
                   </div>
                 </div>
                 <div className="col-lg-4 offset-lg-2 col-sm-12" data-aos="zoom-in-left" data-aos-duration="1000">
@@ -202,10 +200,10 @@ const Home = () => {
               ) : (
                 dataPopular.map((item) => {
                   return (
-                    <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
+                    <div className="col-lg-4 col-md-4 col-sm-6 mb-4" data-aos="zoom-in-left" data-aos-duration="1000">
                       <Link className={style.span} to={`/detailRecipe/${item.id}`}>
                         <div className={style.wrapperImgRecipe}>
-                          <img src={item.image} crossOrigin="anonymous" className={style.imgRecipe} alt="img-recipe" />
+                          <img src={item.image} className={style.imgRecipe} alt="img-recipe" />
                           <div className={style.wrapperTitle}>
                             <span className={style.productType}>{item.name_recipe}</span>
                           </div>

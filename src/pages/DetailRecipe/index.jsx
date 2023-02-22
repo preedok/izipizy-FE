@@ -167,6 +167,8 @@ const DetailRecipe = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const handleEdit = (id) => {};
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -358,7 +360,13 @@ const DetailRecipe = () => {
                 aria-label="Close"
               />
             </div>
-            <div className="modal-body">...</div>
+            <div className="modal-body">
+              <input
+                className={`form-control ${style.formControl}`}
+                placeholder="Leave a comment here"
+                onChange={handleChange}
+              ></input>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
@@ -368,7 +376,7 @@ const DetailRecipe = () => {
                 Close
               </button>
               <button type="button" className="btn btn-primary">
-                Understood
+                Send
               </button>
             </div>
           </div>
