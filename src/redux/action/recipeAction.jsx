@@ -55,13 +55,13 @@ export const getComment = (setDataComments, id) => async (dispatch) => {
 
 // Create Recipe
 export const createRecipe =
-  (insertProduct, imageProduct) => async (dispatch) => {
+  (insertProduct, imageProduct, videoProduct) => async (dispatch) => {
     try {
       const token = localStorage.getItem("token");
       let inputForm = new FormData();
       inputForm.append("name_recipe", insertProduct.name_recipe);
       inputForm.append("ingredients", insertProduct.ingredients);
-      inputForm.append("video", insertProduct.video);
+      inputForm.append("video", videoProduct);
       inputForm.append("description", insertProduct.description);
       inputForm.append("image", imageProduct);
       axios
@@ -89,42 +89,44 @@ export const createRecipe =
   };
 
 // Update Recipe
-export const updateRecipe = (detailProduct, image) => async (dispatch) => {
-  try {
-    const token = localStorage.getItem("token");
-    const formData = new FormData();
-    formData.append("id", detailProduct.id);
-    formData.append("name_recipe", detailProduct.name_recipe);
-    formData.append("ingredients", detailProduct.ingredients);
-    formData.append("video", detailProduct.video);
-    formData.append("description", detailProduct.description);
-    formData.append("image", image, image.name);
-    axios
-      .put(
-        `${process.env.REACT_APP_BACKEND}/api/v1/recipe/${detailProduct.id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data.data);
-        Swal.fire({
-          title: "Update Product Success",
-          icon: "success",
+export const updateRecipe =
+  (detailProduct, image, videos) => async (dispatch) => {
+    try {
+      const token = localStorage.getItem("token");
+      const formData = new FormData();
+      formData.append("id", detailProduct.id);
+      formData.append("name_recipe", detailProduct.name_recipe);
+      formData.append("ingredients", detailProduct.ingredients);
+      formData.append("video", detailProduct.video);
+      formData.append("description", detailProduct.description);
+      formData.append("image", image, image.name);
+      formData.append("video", videos, videos.name);
+      axios
+        .put(
+          `${process.env.REACT_APP_BACKEND}/api/v1/recipe/${detailProduct.id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.data);
+          Swal.fire({
+            title: "Update Product Success",
+            icon: "success",
+          });
         });
+      dispatch({ type: "updateRecipe", payload: "Recipe Updated success" });
+    } catch (error) {
+      Swal.fire({
+        text: error.response.data.message,
+        icon: "warning",
       });
-    dispatch({ type: "updateRecipe", payload: "Recipe Updated success" });
-  } catch (error) {
-    Swal.fire({
-      text: error.response.data.message,
-      icon: "warning",
-    });
-  }
-};
+    }
+  };
 
 // Delete Recipe
 export const deleteRecipe = (id) => async (dispatch) => {
