@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 export const getRecipe = (setRecipe) => async (dispatch) => {
   try {
     axios.get(`${process.env.REACT_APP_BACKEND}/api/v1/recipe`).then((response) => {
-      setRecipe(response?.data?.data[0]);
+      console.log(response?.data?.data);
+      setRecipe(response?.data?.data);
     });
     dispatch({ type: 'getAllRecipe', payload: 'success' });
   } catch (error) {
@@ -63,7 +64,7 @@ export const createRecipe = (insertProduct, imageProduct, videoProduct) => async
         },
       })
       .then((res) => {
-        console.log(res.data);
+        console.log(res?.data);
         Swal.fire({
           title: 'Product Added',
           text: `New product have been added`,
