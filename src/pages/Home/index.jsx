@@ -141,7 +141,7 @@ const Home = () => {
                 </form>
               </div>
               <div className="col-lg-6  d-flex justify-content-lg-end offset-lg-1 col-md-12 col-sm-12 justify-content-sm-center" data-aos="zoom-in-left" data-aos-duration="1000">
-                <img src={popular?.image} crossOrigin="anonymous" className={style.heroImg} alt="hero-img" />
+                <img src={popular?.image} className={style.heroImg} alt="hero-img" />
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ const Home = () => {
               <div className="col-lg-6 col-sm-12" data-aos="zoom-in-right" data-aos-duration="1000">
                 <div className={style.wrapperImg}>
                   <div className={style.accPopularImg} alt="popular-img" />
-                  <img src={popular?.image} crossOrigin="anonymous" className={`position-relative ${style.popularImg}`} alt="popular-img" />
+                  <img src={popular?.image} className={`position-relative ${style.popularImg}`} alt="popular-img" />
                 </div>
               </div>
 
