@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
+<div align="center">
+  <img height="150" <img src="https://iili.io/H3zVku9.png" alt="logo" border="0"/>
+</div>
+  <h3 align="center">Izipizy Food recipe</h3>
+  <p align="center">
+    <a href="https://github.com/preedok/izipizy-FE"><strong>Explore the docs »</strong></a>
+    <br />
+    <a href="https://mama-recipe-izipizy.vercel.app/">View Demo</a>
+    ·
+    <a href="">Report Bug</a>
+    ·
+    <a href="">Request Feature</a>
+  </p>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- TABLE OF CONTENTS -->
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Setup .env](#setup-env)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [Related Project](#related-project)
+- [Contact](#contact)
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About The Project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Izipizy Food recipe Website application is a Izipizy Food recipe sharing application. This application is built using Express Js and React Js. Features in this application such as login, register, landing page, add recipe, edit recipe, delete recipe, and profile.
 
-### `npm test`
+### Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Redux](https://redux.js.org/)
+- [Bootstrap Css](https://getbootstrap.com/)
+- [React js](https://reactjs.org/)
+- and other
 
-### `npm run build`
+<!-- GETTING STARTED -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is an example of how to list things you need to use the software and how to install them.
 
-### `npm run eject`
+- [nodejs](https://nodejs.org/en/download/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Clone This Front End Repo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+git clone https://github.com/Iqbalapredo/FE-RECIPE.git
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Go To Folder Repo
 
-## Learn More
+```
+cd izipizy-FE
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Install Module
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm install
+```
 
-### Code Splitting
+- <a href="#setup-env">Setup .env</a>
+- Type ` npm run dev` To Start Website
+- Type ` npm run production` To Start Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Setup .env
 
-### Analyzing the Bundle Size
+Create .env file in your root project folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+REACT_APP_BACKEND = [BACKEND_URL]
+```
 
-### Making a Progressive Web App
+<!-- ROADMAP -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Screenshots
 
-### Advanced Configuration
+<table>
+ <tr>
+    <td><img width="350px" src="https://iili.io/HfrVZIp.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="https://iili.io/HfrvxF2.png"  border="0"  alt="2" /></td>
+  </tr>
+   <tr>
+    <td>Landing Page</td>
+    <td>Login</td>
+  </tr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  <tr>
+    <td><img width="350px"  src="https://iili.io/HfrvQl2.png" border="0" alt="3" /> </td>
+     <td><img width="350px"  src="https://iili.io/HfrS5Ex.png"  border="0" alt="4" /></td>
+  </tr>
+   <tr>
+    <td>Register</td>
+     <td>My Profile</td>
+  </tr>
+  <tr>
+    <td><img width="350px"  src="https://iili.io/HfrvQl2.png" border="0" alt="3" /> </td>
+     <td><img width="350px"  src="https://iili.io/HfrS5Ex.png"  border="0" alt="4" /></td>
+  </tr>
+   <tr>
+    <td>Detail Product</td>
+     <td>Video Recipe</td>
+  </tr>
+  
+ 
+</table>
 
-### Deployment
+<!-- CONTRIBUTING -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contributing
 
-### `npm run build` fails to minify
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Related Project
+
+:rocket: [`Backend Izipizy Food recipe`](https://github.com/Iqbalapredo/BE-RECIPE)
+
+:rocket: [`Frontend Izipizy Food recipe`](https://github.com/preedok/izipizy-FE)
+
+:rocket: [`Demo Izipizy Food recipe`](https://mama-recipe-izipizy.vercel.app/)
+
+<!-- CONTACT -->
+
+## Contact
+
+My Email : iqbalapreedo@gmail.com
+
+Project Link: [https://github.com/preedok/izipizy-FE](https://github.com/preedok/izipizy-FE)
