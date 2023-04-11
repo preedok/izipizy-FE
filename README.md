@@ -140,6 +140,54 @@ Contributions are what make the open source community such an amazing place to b
 
 :rocket: [`Demo Izipizy Food recipe`](https://mama-recipe-izipizy.vercel.app/)
 
+<!-- Meet The Teams -->
+
+## Meet The Teams
+
+<center>
+  <table align="center">
+    <tr >
+    <th >Frontend Developer / Product Manager</th>
+      <th >Frontend Developer</th>
+      <th >Frontend Developer</th>
+      <th >Backend Developer</th>
+      <th >Backend Developer</th>
+    </tr>
+    <tr >
+      <td align="center">
+        <a href="https://github.com/hosealeonardo18">
+          <img width="200"  src="./documentation/hose.jpg" alt=""><br/>
+          <b>Hose Leonardo</b>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/preedok">
+          <img width="200"  src="./documentation/iqbal.jpg" alt=""><br/>
+          <b>Muhamad Iqbal Aprido</b>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/Shaniara28">
+          <img width="200"  src="./documentation/alif.jpg" alt=""><br/>
+          <b>Shania Riski Agustin</b>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/RezaldhoArmadhani">
+          <img width="200"  src="./documentation/aldho.jpg" alt=""><br/>
+          <b>Rezaldho Armadani</b>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/VerdyNordsten">
+          <img width="200"   src="./documentation/verdy.jpg" alt=""><br/>
+          <b>Verdy Nugraha</b>
+        </a>
+      </td>
+    </tr>
+  </table>
+</center>
+
 <!-- CONTACT -->
 
 ## Contact
