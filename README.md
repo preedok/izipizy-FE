@@ -99,7 +99,6 @@ REACT_APP_BACKEND = [BACKEND_URL]
     <td>Landing Page</td>
     <td>Login</td>
   </tr>
-
   <tr>
     <td><img width="350px"  src="./documentation/register.png" border="0" alt="3" /> </td>
      <td><img width="350px"  src="./documentation/profile.png"  border="0" alt="4" /></td>
@@ -123,9 +122,7 @@ REACT_APP_BACKEND = [BACKEND_URL]
    <tr>
     <td>Detail Recipe</td>
     <td>Create Recipe</td>  
-  </tr>
-  
- 
+  </tr>  
 </table>
 
 <!-- CONTRIBUTING -->
