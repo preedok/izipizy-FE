@@ -92,8 +92,8 @@ REACT_APP_BACKEND = [BACKEND_URL]
 
 <table>
  <tr>
-    <td><img width="350px" src="https://iili.io/HfrVZIp.png" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://iili.io/HfrvxF2.png"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="./documentation/landing.png" border="0" alt="1" /></td>
+    <td> <img width="350px" src="./documentation/login.png"  border="0"  alt="2" /></td>
   </tr>
    <tr>
     <td>Landing Page</td>
@@ -101,20 +101,28 @@ REACT_APP_BACKEND = [BACKEND_URL]
   </tr>
 
   <tr>
-    <td><img width="350px"  src="https://iili.io/HfrvQl2.png" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://iili.io/HfrS5Ex.png"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="./documentation/register.png" border="0" alt="3" /> </td>
+     <td><img width="350px"  src="./documentation/profile.png"  border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Register</td>
      <td>My Profile</td>
   </tr>
   <tr>
-    <td><img width="350px"  src="https://iili.io/HfrvQl2.png" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://iili.io/HfrS5Ex.png"  border="0" alt="4" /></td>
+     <td><img width="350px"  src="./documentation/updateProfile.png" border="0" alt="3" /> </td> 
+     <td><img width="350px"  src="./documentation/video.png"  border="0" alt="4" /></td>
   </tr>
    <tr>
-    <td>Detail Product</td>
+    <td>Update Profile</td>
      <td>Video Recipe</td>
+  </tr>
+   <tr>
+    <td><img width="350px"  src="./documentation/detail.png" border="0" alt="3" /> </td>
+    <td><img width="350px"  src="./documentation/create.png" border="0" alt="3" /> </td> 
+  </tr>
+   <tr>
+    <td>Detail Recipe</td>
+    <td>Create Recipe</td>  
   </tr>
   
  
