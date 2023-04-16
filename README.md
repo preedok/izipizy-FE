@@ -3,7 +3,7 @@
 <div align="center">
   <img height="150" <img src="https://iili.io/H3zVku9.png" alt="logo" border="0"/>
 </div>
-  <h3 align="center">Izipizy Food recipe</h3>
+  <h3 align="center">Izipizy Food Recipe</h3>
   <p align="center">
     <a href="https://github.com/preedok/izipizy-FE"><strong>Explore the docs »</strong></a>
     <br />
