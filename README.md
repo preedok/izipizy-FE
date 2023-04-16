@@ -173,7 +173,7 @@ Contributions are what make the open source community such an amazing place to b
       </td>
       <td align="center">
         <a href="https://github.com/Shaniara28">
-          <img width="200"  src="./documentation/alif.jpg" alt=""><br/>
+          <img width="200"  src="./documentation/shania.jpg" alt=""><br/>
           <b>Shania Riski Agustin</b>
         </a>
       </td>
