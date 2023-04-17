@@ -139,7 +139,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Related Project
 
-:rocket: [`Backend Izipizy Food recipe`](https://github.com/hosealeonardo18/izipizy_backend)
+:rocket: [`Backend Izipizy Food recipe`](https://github.com/preedok/izipizy_backend)
 
 :rocket: [`Frontend Izipizy Food recipe`](https://github.com/preedok/izipizy-FE)
 
