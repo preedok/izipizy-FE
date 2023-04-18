@@ -109,17 +109,17 @@ REACT_APP_BACKEND = [BACKEND_URL]
   </tr>
   <tr>
      <td><img width="350px"  src="./documentation/created.png" border="0" alt="3" /> </td> 
-     <td><img width="350px"  src="./documentation/video.png"  border="0" alt="4" /></td>
+  <td><img width="350px"  src="./documentation/details.png" border="0" alt="3" /> </td>
   </tr>
    <tr>
        <td>Create Recipe</td>  
-     <td>Video Recipe</td>
+        <td>Detail Recipe</td>
   </tr>
    <tr>
-   <td><img width="350px"  src="./documentation/details.png" border="0" alt="3" /> </td>
+     <td><img width="350px"  src="./documentation/video.png"  border="0" alt="4" /></td>
   </tr>
    <tr>
-    <td>Detail Recipe</td>
+    <td>Video Recipe</td>
   </tr>  
 </table>
 
