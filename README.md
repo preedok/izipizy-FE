@@ -116,8 +116,8 @@ REACT_APP_BACKEND = [BACKEND_URL]
      <td>Video Recipe</td>
   </tr>
    <tr>
-    <td><img width="350px"  src="./documentation/detail.png" border="0" alt="3" /> </td>
-    <td><img width="350px"  src="./documentation/create.png" border="0" alt="3" /> </td> 
+    <td><img width="350px"  src="./documentation/details.png" border="0" alt="3" /> </td>
+    <td><img width="350px"  src="./documentation/created.png" border="0" alt="3" /> </td> 
   </tr>
    <tr>
     <td>Detail Recipe</td>
